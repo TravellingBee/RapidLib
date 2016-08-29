@@ -8,7 +8,7 @@
     android:padding="@dimen/dp16"
     tools:context=".module.second.SecondActivity">
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -18,7 +18,7 @@
         android:text="正常"
         android:textColor="@android:color/white"/>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn2"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -28,7 +28,7 @@
         android:text="提醒"
         android:textColor="@android:color/white"/>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn3"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -38,7 +38,7 @@
         android:text="错误"
         android:textColor="@android:color/white"/>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn4"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -48,7 +48,7 @@
         android:text="成功"
         android:textColor="@android:color/white"/>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn5"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -58,7 +58,7 @@
         android:text="警告"
         android:textColor="@android:color/white"/>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn6"
         android:layout_width="match_parent"
         android:layout_height="56dp"

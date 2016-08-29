@@ -1,11 +1,12 @@
 package com.marno.mbasiclib.utils;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v7.widget.CardView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,12 @@ public class ToastUtil {
     private static int CENTER_TOP = Gravity.CENTER_HORIZONTAL | Gravity.TOP;
     private static int CENTER_BOTTOM = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
     private static int TOP_LEFT = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
+
+    public static final String MATERIAL_RED = "#F44336";
+    public static final String MATERIAL_GREEN = "#4caf50";
+    public static final String MATERIAL_YELLOW = "#FFC107";
+    public static final String MATERIAL_DEEP_ORANGE = "#FF5722";
+    public static final String MATERIAL_BLUE_GREY = "#607D8B";
 
     public static void init(Context context) {
         mContext = context;
@@ -63,10 +70,10 @@ public class ToastUtil {
 
         View view = LayoutInflater.from(mContext).inflate(R.layout.rapid_layout_common_toast, null);
         TextView tvToast = (TextView) view.findViewById(R.id.tv_content_toast);
-        LinearLayout llayoutBg = (LinearLayout) view.findViewById(R.id.llayout_bg_toast);
+        CardView llayoutBg = (CardView) view.findViewById(R.id.llayout_bg_toast);
         ImageView ivIcon = (ImageView) view.findViewById(R.id.iv_icon_toast);
 
-        llayoutBg.setBackgroundResource(bgColor);
+        llayoutBg.setCardBackgroundColor(bgColor);
         ivIcon.setImageResource(icon);
         tvToast.setText(content);
 
@@ -128,7 +135,7 @@ public class ToastUtil {
      * 显示成功的toast
      */
     public static void success(String content) {
-        showAtCenterBottom(R.drawable.success, R.color.toast_success, content);
+        showAtCenterBottom(R.drawable.success, Color.parseColor(MATERIAL_GREEN), content);
     }
 
     /**
@@ -137,7 +144,7 @@ public class ToastUtil {
      * @param content
      */
     public static void error(String content) {
-        showAtCenterBottom(R.drawable.fail, R.color.toast_fail, content);
+        showAtCenterBottom(R.drawable.fail,Color.parseColor(MATERIAL_RED), content);
     }
 
     /**
@@ -146,7 +153,7 @@ public class ToastUtil {
      * @param content
      */
     public static void warn(String content) {
-        showAtCenterBottom(R.drawable.warn, R.color.toast_warn, content);
+        showAtCenterBottom(R.drawable.warn, Color.parseColor(MATERIAL_YELLOW), content);
     }
 
     /**
@@ -155,7 +162,7 @@ public class ToastUtil {
      * @param content
      */
     public static void remind(String content) {
-        showAtCenterBottom(R.drawable.remind, R.color.toast_remind, content);
+        showAtCenterBottom(R.drawable.remind, Color.parseColor(MATERIAL_DEEP_ORANGE), content);
     }
 
     /**
@@ -164,7 +171,7 @@ public class ToastUtil {
      * @param content
      */
     public static void common(String content) {
-        showAtCenterBottom(R.drawable.common, R.color.toast_common, content);
+        showAtCenterBottom(R.drawable.common, Color.parseColor(MATERIAL_BLUE_GREY), content);
     }
 
 }
