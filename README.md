@@ -156,8 +156,8 @@ public class MainActivity extends RapidPagerMainActivity {
 
 ####五、关于我 Marno
 
-邮箱：marnodev@163.com
-简书：[点击关注Marno的简书](http://www.jianshu.com/users/174a09ba6c25)
+- 邮箱：marnodev@163.com
+- 简书：[点击关注Marno的简书](http://www.jianshu.com/users/174a09ba6c25)
 
 ####六、免责声明
 本项目为开源项目，只做交流学习，不做商业盈利等行为
