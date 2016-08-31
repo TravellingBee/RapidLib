@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.marno.mbasiclib.widgets.xrecyclerview.XRecyclerView;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import rx.Observable;
@@ -23,12 +25,13 @@ import rx.subjects.PublishSubject;
  * Created by 李刚 on 2016/3/14/13:53.
  * 所有Fragment的基类
  */
-public abstract class MBasicFragment extends Fragment {
+public abstract class MBasicFragment extends Fragment implements XRecyclerView.LoadingListener {
 
     protected String TAG = getClass().getSimpleName();
 
     protected Activity mContext;
     protected boolean mIsFirstShow = true;
+    protected boolean mIsRefresh;
     private Unbinder mUnbinder;
 
     protected final PublishSubject<FragmentEvent> lifecycleSubject = PublishSubject.create();
@@ -85,10 +88,6 @@ public abstract class MBasicFragment extends Fragment {
 
     @Override
     public void onResume() {
-        if (mIsFirstShow) {
-            mIsFirstShow = false;
-            initData();
-        }
         super.onResume();
         lifecycleSubject.onNext(FragmentEvent.RESUME);
     }
@@ -135,6 +134,15 @@ public abstract class MBasicFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onRefresh() {
+        mIsRefresh = true;
+    }
+
+    @Override
+    public void onLoadMore() {
+
+    }
 
     //监听Frament声明周期，当Fragment销毁后，停止网络请求
     @NonNull

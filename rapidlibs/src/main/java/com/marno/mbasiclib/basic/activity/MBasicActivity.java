@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.marno.mbasiclib.utils.StackUtil;
 import com.marno.mbasiclib.utils.ToastUtil;
+import com.marno.mbasiclib.widgets.xrecyclerview.XRecyclerView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,11 +27,13 @@ import rx.subjects.PublishSubject;
  * Created by marno on 2016/7/18/10:24.
  * All Activity base class
  */
-public abstract class MBasicActivity extends AppCompatActivity {
+public abstract class MBasicActivity extends AppCompatActivity   implements XRecyclerView.LoadingListener{
 
     protected String TAG = getClass().getSimpleName();
 
     protected Activity mContext;
+    protected boolean mIsRefresh;
+
     protected boolean mIsFirstShow = true;
     private Unbinder mUnbinder;
 
@@ -116,6 +119,16 @@ public abstract class MBasicActivity extends AppCompatActivity {
         super.onDestroy();
         StackUtil.getIns().pop(this);
         mUnbinder.unbind();
+    }
+
+    @Override
+    public void onRefresh() {
+
+    }
+
+    @Override
+    public void onLoadMore() {
+
     }
 
     @NonNull

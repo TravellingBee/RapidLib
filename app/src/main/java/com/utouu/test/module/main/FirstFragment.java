@@ -10,12 +10,12 @@ import android.widget.ImageView;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.marno.mbasiclib.adapter.RecyclerAdapter;
 import com.marno.mbasiclib.adapter.RecyclerAdapterHelper;
-import com.marno.mbasiclib.basic.fragment.MBasicRefreshFragment;
+import com.marno.mbasiclib.basic.fragment.MBasicPagerFragment;
 import com.marno.mbasiclib.manager.BannerManager;
 import com.marno.mbasiclib.manager.GlideManager;
 import com.marno.mbasiclib.widgets.MultipleStatusView;
-import com.marno.mbasiclib.widgets.xrecyclerview.XRecyclerView;
 import com.marno.mbasiclib.widgets.xrecyclerview.ProgressStyle;
+import com.marno.mbasiclib.widgets.xrecyclerview.XRecyclerView;
 import com.utouu.test.R;
 import com.utouu.test.data.entity.TestEntity;
 import com.utouu.test.module.second.SecondActivity;
@@ -36,7 +36,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by marno on 2016/8/23/15:20.
  */
-public class FirstFragment extends MBasicRefreshFragment {
+public class FirstFragment extends MBasicPagerFragment {
 
     @BindView(R.id.content_view)
     XRecyclerView mRecyclerView;

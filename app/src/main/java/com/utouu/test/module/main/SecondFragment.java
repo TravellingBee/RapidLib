@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.marno.mbasiclib.basic.fragment.MBasicFragment;
+import com.marno.mbasiclib.basic.fragment.MBasicPagerFragment;
 import com.marno.mbasiclib.utils.ToastUtil;
 import com.utouu.test.R;
 
@@ -14,7 +14,7 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SecondFragment extends MBasicFragment {
+public class SecondFragment extends MBasicPagerFragment {
 
 
     public static SecondFragment newIns() {

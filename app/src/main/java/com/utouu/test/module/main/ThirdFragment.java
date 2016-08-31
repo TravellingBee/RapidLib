@@ -6,7 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 
 import com.marno.mbasiclib.adapter.RecyclerAdapter;
-import com.marno.mbasiclib.basic.fragment.MBasicRefreshFragment;
+import com.marno.mbasiclib.basic.fragment.MBasicPagerFragment;
 import com.marno.mbasiclib.utils.SP;
 import com.marno.mbasiclib.utils.ToastUtil;
 import com.marno.mbasiclib.widgets.MultipleStatusView;
@@ -29,7 +29,7 @@ import butterknife.BindView;
 /**
  * Created by marno on 2016/8/26/11:01.
  */
-public class ThirdFragment extends MBasicRefreshFragment {
+public class ThirdFragment extends MBasicPagerFragment {
 
     @BindView(R.id.content_view)
     XRecyclerView mRecyclerView;
