@@ -3,7 +3,24 @@
 ####一、简介：
 将一些自己在开发中常用的功能和第三方依赖库封装起来，处理简单的通用逻辑，让我们快速创建APP，将更多时间花在主要核心逻辑的编写；功能还在不断完善，有兴趣可以star或者fork，也可以联系我进行交流（个人邮箱：marnodev@163.com）
 
-**使用RapidLibs后将具备以下功能：**
+**1.1 Gradle集成**
+
+```
+allprojects {
+    repositories {
+        ...
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+
+```
+dependencies {
+    compile 'com.github.MarnonDev:RapidLibs:v1.0.2'
+}
+```
+
+**1.2 使用RapidLibs后将具备以下功能：**
 
 1. 快速创建常见MainActivity（支持ViewPager方式切换、普通hide/show方式切换）
 2. 继承MBasicSwipeActivity创建支持手势返回的Activity
@@ -19,21 +36,6 @@
 10. 还有常用工具类（NetUtil，ScreenUtil,DeviceUtil,MLog,SP,ToastUtil,StackUtil,KeyBoardUtil）
 11. 支持29种加载动画，见[AVLoadingIndicatorView](https://github.com/81813780/AVLoadingIndicatorView)
 12. 常用的Dialog样式，ISO风格，MetrialDialog风格，多种弹出动画，见[FlycoDialog](https://github.com/H07000223/FlycoDialog_Master)
-
-```
-allprojects {
-    repositories {
-        ...
-        maven { url "https://jitpack.io" }
-    }
-}
-```
-
-```
-dependencies {
-    compile 'com.github.MarnonDev:RapidLibs:v1.0.1'
-}
-```
 
 ####二、主要功能
 ![主要功能](https://github.com/MarnonDev/RapidLibs/blob/master/screenshot/structure.png)
