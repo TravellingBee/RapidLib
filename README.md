@@ -3,7 +3,8 @@
 ####一、简介：
 将一些自己在开发中常用的功能和第三方依赖库封装起来，处理简单的通用逻辑，让我们快速创建APP，将更多时间花在主要核心逻辑的编写；功能还在不断完善，有兴趣可以star或者fork，也可以联系我进行交流（个人邮箱：marnodev@163.com）
 
-**使用RapidLibs后可以具备以下功能：**
+**使用RapidLibs后将具备以下功能：**
+
 1. 快速创建常见MainActivity（支持ViewPager方式切换、普通hide/show方式切换）
 2. 继承MBasicSwipeActivity创建支持手势返回的Activity
 3. 一句代码实现沉浸式状态栏
