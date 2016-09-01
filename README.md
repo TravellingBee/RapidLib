@@ -3,6 +3,22 @@
 ####一、简介：
 将一些自己在开发中常用的功能和第三方依赖库封装起来，处理简单的通用逻辑，让我们快速创建APP，将更多时间花在主要核心逻辑的编写；功能还在不断完善，有兴趣可以star或者fork，也可以联系我进行交流（个人邮箱：marnodev@163.com）
 
+**使用RapidLibs后可以具备以下功能：**
+1. 快速创建常见MainActivity（支持ViewPager方式切换、普通hide/show方式切换）
+2. 继承MBasicSwipeActivity创建支持手势返回的Activity
+3. 一句代码实现沉浸式状态栏
+2. 快速创建适配器（ViewPager、ListView、GridView、RecyclerView、ExpandableListView）
+3. 在Fragment可见时才进行网络请求（MBasicFragment/MBasicPagerFragment）
+4. 多状态切换（加载中/无网络/空页面/加载错误等）
+5. RecyclerView快速创建有下拉刷新/上拉加载的列表（List/Grid），可添加多个Header和Footer
+6. Retrofit配合RxJava请求网络，处理数据
+7. GlideManager.loadImg(Object);快速加载任何格式的图片
+8. 集成常用尺寸，无需再单独维护，直接@dimens/dp8或 @dimens/sp12 就可以使用
+9. BannerManager.showBanner（ConvenientBanner mBanner, List images）快速创建banner图
+10. 还有常用工具类（NetUtil，ScreenUtil,DeviceUtil,MLog,SP,ToastUtil,StackUtil,KeyBoardUtil）
+11. 支持29种加载动画，见[AVLoadingIndicatorView](https://github.com/81813780/AVLoadingIndicatorView)
+12. 常用的Dialog样式，ISO风格，MetrialDialog风格，多种弹出动画，见[FlycoDialog](https://github.com/H07000223/FlycoDialog_Master)
+
 ```
 allprojects {
     repositories {
@@ -19,7 +35,7 @@ dependencies {
 ```
 
 ####二、主要功能
-![分包介绍](https://github.com/MarnonDev/RapidLibs/blob/master/screenshot/structure.png)
+![主要功能](https://github.com/MarnonDev/RapidLibs/blob/master/screenshot/structure.png)
 
 ####三、使用方法
 
@@ -31,14 +47,12 @@ dependencies {
 
 >可以根据自己的实际使用情况继承相对应的类，如果MBasicActivity/MBasicFragment中的方法实现实现不了功能，可以在写一个BaseActivity继承MBasicActivity类，实现一些统一的操作。
 
->|Activity/Fragment|刷新和加载|滑动返回|
->|:---:|:---:|:---:|
->|MBasicActivity|X|X|
->|MBasicRefreshActivity|O|X|
->|MBasicSwipeActivity|X|O|
->|MBasicSwipeAndRefreshActivity|O|O|
->|MBasicFragment|X|X|
->|MBasicRefreshFragment|O|X|
+>|Activity/Fragment|刷新和加载|滑动返回|使用|
+>|:---:|:---:|:---:|:---:|
+>|MBasicActivity|O|X|点击切换tab|
+>|MBasicSwipeActivity|O|O|滑动切换tab|
+>|MBasicFragment|O|X|非ViewPager中|
+>|MBasicPagerFragment|O|X|ViewPager中|
 
 #####3.3 data （数据操作相关，如网络请求、通用实体类等）
 
@@ -150,7 +164,7 @@ public class MainActivity extends RapidPagerMainActivity {
 >* [ThePacific](https://github.com/ThePacific) 的万能适配器 [adapter](https://github.com/ThePacific/adapter)
 >* [H07000223](https://github.com/H07000223) 的 [FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout) 和 [FlycoDialog_Master](https://github.com/H07000223/FlycoDialog_Master)
 >* [saiwu-bigkoo](https://github.com/saiwu-bigkoo) 的banner图 [ConvenientBanner](https://github.com/saiwu-bigkoo/Android-ConvenientBanner)
-> * [Jude95](https://github.com/Jude95) 的滑动返回Activity库 [SwipeBackHelper](https://github.com/Jude95/SwipeBackHelper)
+>* [Jude95](https://github.com/Jude95) 的滑动返回Activity库 [SwipeBackHelper](https://github.com/Jude95/SwipeBackHelper)
 >* [jianghejie](https://github.com/jianghejie) 的RecyclerView封装 [XRecyclerView](https://github.com/jianghejie/XRecyclerView)
 >* 还有一些好用的工具类，来自网络，再次感谢他们的无私分享
 
