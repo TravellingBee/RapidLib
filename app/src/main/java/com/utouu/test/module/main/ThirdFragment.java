@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.marno.mbasiclib.adapter.RecyclerAdapter;
 import com.marno.mbasiclib.basic.fragment.MBasicPagerFragment;
-import com.marno.mbasiclib.utils.SP;
 import com.marno.mbasiclib.utils.ToastUtil;
 import com.marno.mbasiclib.widgets.MultipleStatusView;
 import com.marno.mbasiclib.widgets.xrecyclerview.XRecyclerView;
@@ -16,9 +15,7 @@ import com.utouu.test.adapter.GoodsGridRecyclerAdapter;
 import com.utouu.test.data.entity.GoodsEntity;
 import com.utouu.test.data.entity.GoodsList;
 import com.utouu.test.data.entity.GoodsListEntity;
-import com.utouu.test.data.entity.UserEntity;
 import com.utouu.test.data.repository.GoodsRepository;
-import com.utouu.test.data.repository.UserRepository;
 import com.utouu.test.data.retrofit.DefaultSubscriber;
 
 import java.util.HashMap;
@@ -68,20 +65,8 @@ public class ThirdFragment extends MBasicPagerFragment {
     // 加载数据
     protected void initData() {
         initGoodsData(mPageNum);
-        initUserInfo();
     }
 
-    private void initUserInfo() {
-        UserRepository.getIns().getUserInfo("", "")
-                .compose(bindUntilEvent(FragmentEvent.DESTROY))
-                .subscribe(new DefaultSubscriber<UserEntity>() {
-                    @Override
-                    public void _onNext(UserEntity entity) {
-                        SP.put("", mContext, "userName", entity.name);
-                    }
-                });
-
-    }
 
     //设置商品适配器
     private void setAdapter() {
