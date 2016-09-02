@@ -25,23 +25,23 @@ dependencies {
 1. 快速创建常见MainActivity（支持ViewPager方式切换、普通hide/show方式切换）
 2. 继承MBasicSwipeActivity创建支持手势返回的Activity
 3. 一句代码实现沉浸式状态栏
-2. 快速创建适配器（ViewPager、ListView、GridView、RecyclerView、ExpandableListView）
-3. 在Fragment可见时才进行网络请求（MBasicFragment/MBasicPagerFragment）
-4. 多状态切换（加载中/无网络/空页面/加载错误等）
-5. RecyclerView快速创建有下拉刷新/上拉加载的列表（List/Grid），可添加多个Header和Footer
-6. Retrofit配合RxJava请求网络，处理数据
-7. GlideManager.loadImg(Object);快速加载任何格式的图片
-8. 集成常用尺寸，无需再单独维护，直接@dimens/dp8或 @dimens/sp12 就可以使用
-9. BannerManager.showBanner（ConvenientBanner mBanner, List images）快速创建banner图
-10. 还有常用工具类（NetUtil，ScreenUtil,DeviceUtil,MLog,SP,ToastUtil,StackUtil,KeyBoardUtil）
-11. 支持29种加载动画，见[AVLoadingIndicatorView](https://github.com/81813780/AVLoadingIndicatorView)
-12. 常用的Dialog样式，ISO风格，MetrialDialog风格，多种弹出动画，见[FlycoDialog](https://github.com/H07000223/FlycoDialog_Master)
+4. 快速创建适配器（ViewPager、ListView、GridView、RecyclerView、ExpandableListView）
+5. 在Fragment可见时才进行网络请求（MBasicFragment/MBasicPagerFragment）
+6. 多状态切换（加载中/无网络/空页面/加载错误等）
+7. RecyclerView快速创建有下拉刷新/上拉加载的列表（List/Grid），可添加多个Header和Footer
+8. Retrofit配合RxJava请求网络，处理数据
+9. GlideManager.loadImg(Object);快速加载任何格式的图片
+10. 集成常用尺寸，无需再单独维护，直接@dimens/dp8或 @dimens/sp12 就可以使用
+11. BannerManager.showBanner（ConvenientBanner mBanner, List images）快速创建banner图
+12. 还有常用工具类（NetUtil，ScreenUtil,DeviceUtil,MLog,SP,ToastUtil,StackUtil,KeyBoardUtil）
+13. 支持29种加载动画，见[AVLoadingIndicatorView](https://github.com/81813780/AVLoadingIndicatorView)
+14. 常用的Dialog样式，ISO风格，MetrialDialog风格，多种弹出动画，见[FlycoDialog](https://github.com/H07000223/FlycoDialog_Master)
 
 
 **1.3 使用前后Apk大小：**
 
 在没有做任何Apk大小优化的情况下，打了一个空包的体积大小对比：
-
+![对比](https://github.com/MarnonDev/RapidLibs/blob/master/screenshot/compare.png)
 
 ####二、主要功能
 ![主要功能](https://github.com/MarnonDev/RapidLibs/blob/master/screenshot/structure.png)
