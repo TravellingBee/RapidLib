@@ -37,6 +37,12 @@ dependencies {
 11. 支持29种加载动画，见[AVLoadingIndicatorView](https://github.com/81813780/AVLoadingIndicatorView)
 12. 常用的Dialog样式，ISO风格，MetrialDialog风格，多种弹出动画，见[FlycoDialog](https://github.com/H07000223/FlycoDialog_Master)
 
+
+**1.3 使用前后Apk大小：**
+
+在没有做任何Apk大小优化的情况下，打了一个空包的体积大小对比：
+
+
 ####二、主要功能
 ![主要功能](https://github.com/MarnonDev/RapidLibs/blob/master/screenshot/structure.png)
 
