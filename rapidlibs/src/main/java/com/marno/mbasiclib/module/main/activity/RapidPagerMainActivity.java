@@ -45,12 +45,13 @@ public abstract class RapidPagerMainActivity extends MBasicActivity implements I
         int[] tabUnselectedIcon = getTabUnselectedIcon();
         final List<Fragment> fragments = initFragments();
 
-        setTab();
+
         if (tabNameArray == null) {
             mTabLayout.setTextsize(0);
             mTabLayout.setIconHeight(26);
             mTabLayout.setIconWidth(26);
         }
+        setTab();
 
         for (int i = 0, size = fragments.size(); i < size; i++) {
             String title = tabNameArray == null ? "" : tabNameArray[i];

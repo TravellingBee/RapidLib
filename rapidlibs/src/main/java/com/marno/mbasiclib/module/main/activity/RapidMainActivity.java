@@ -37,7 +37,7 @@ public abstract class RapidMainActivity extends MBasicActivity implements IMainV
         int[] tabSelectedIcon = getTabSelectedIcon();
         int[] tabUnselectedIcon = getTabUnselectedIcon();
         final ArrayList<Fragment> fragments = initFragments();
-        
+
         if (tabNameArray == null) {
             mTabLayout.setTextsize(0);
             mTabLayout.setIconHeight(26);
