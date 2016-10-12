@@ -28,7 +28,7 @@ public class ContentFragment4 extends MBasicFragment {
     }
 
     @Override
-    protected void initData() {
+    protected void loadData() {
 
     }
 

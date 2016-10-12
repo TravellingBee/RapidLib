@@ -1,34 +1,32 @@
-package com.utouu.test.module.second;
+package com.utouu.test.module.login;
 
 import android.graphics.Color;
 import android.os.Bundle;
 
-import com.marno.mbasiclib.basic.activity.MBasicSwipeActivity;
 import com.utouu.test.R;
+import com.utouu.test.base.BaseActivity;
 
-/**
- * Created by marno on 2016/8/23/15:20.
- * 目标页面
- */
-public class SecondActivity extends MBasicSwipeActivity  {
+public class LoginActivity extends BaseActivity {
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_second;
+        return R.layout.activity_login;
     }
 
     @Override
     protected int getStatusBarColor() {
-        return Color.BLACK;
+        return Color.parseColor("#101013");
     }
 
     @Override
     protected void loadData() {
+
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
 
     }
+
 
 }

@@ -57,7 +57,7 @@ public class MainActivity extends RapidPagerMainActivity {
     }
 
     @Override
-    protected void initData() {
+    protected void loadData() {
 
     }
 

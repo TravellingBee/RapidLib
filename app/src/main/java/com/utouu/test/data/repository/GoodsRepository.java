@@ -1,7 +1,7 @@
 package com.utouu.test.data.repository;
 
 import com.utouu.test.data.entity.GoodsListEntity;
-import com.utouu.test.data.retrofit.RetrofitHelp;
+import com.utouu.test.data.retrofit.RetrofitHelper;
 
 import java.util.HashMap;
 
@@ -35,7 +35,7 @@ public class GoodsRepository extends BaseRepository {
      * @return
      */
     public Observable<GoodsListEntity> getGoodsList(HashMap<String, String> params) {
-        return transform(RetrofitHelp.getIns().GOODS().goodsList(params));
+        return transform(RetrofitHelper.getIns().GOODS().goodsList(params));
     }
 
 }

@@ -5,20 +5,17 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 
+import com.marno.easystatelibrary.EasyStatusView;
 import com.marno.mbasiclib.adapter.RecyclerAdapter;
-import com.marno.mbasiclib.basic.fragment.MBasicRefreshFragment;
-import com.marno.mbasiclib.utils.SP;
+import com.marno.mbasiclib.basic.fragment.MBasicPagerFragment;
 import com.marno.mbasiclib.utils.ToastUtil;
-import com.marno.mbasiclib.widgets.MultipleStatusView;
 import com.marno.mbasiclib.widgets.xrecyclerview.XRecyclerView;
 import com.utouu.test.R;
 import com.utouu.test.adapter.GoodsGridRecyclerAdapter;
 import com.utouu.test.data.entity.GoodsEntity;
 import com.utouu.test.data.entity.GoodsList;
 import com.utouu.test.data.entity.GoodsListEntity;
-import com.utouu.test.data.entity.UserEntity;
 import com.utouu.test.data.repository.GoodsRepository;
-import com.utouu.test.data.repository.UserRepository;
 import com.utouu.test.data.retrofit.DefaultSubscriber;
 
 import java.util.HashMap;
@@ -29,12 +26,12 @@ import butterknife.BindView;
 /**
  * Created by marno on 2016/8/26/11:01.
  */
-public class ThirdFragment extends MBasicRefreshFragment {
+public class ThirdFragment extends MBasicPagerFragment {
 
     @BindView(R.id.content_view)
     XRecyclerView mRecyclerView;
-    @BindView(R.id.msvLayout)
-    MultipleStatusView mMsvLayout;
+    @BindView(R.id.esvLayout)
+    EasyStatusView mEsvLayout;
 
     private int mPageNum = 1;
     private int mAllPages;
@@ -57,7 +54,7 @@ public class ThirdFragment extends MBasicRefreshFragment {
     protected void initView(View view, Bundle savedInstanceState) {
         mParam_goodsList = new HashMap<>();
 
-        mMsvLayout.loading();
+        mEsvLayout.loading();
         mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
         mRecyclerView.setLoadingListener(this);
 
@@ -66,22 +63,10 @@ public class ThirdFragment extends MBasicRefreshFragment {
 
 
     // 加载数据
-    protected void initData() {
+    protected void loadData() {
         initGoodsData(mPageNum);
-        initUserInfo();
     }
 
-    private void initUserInfo() {
-        UserRepository.getIns().getUserInfo("", "")
-                .compose(bindUntilEvent(FragmentEvent.DESTROY))
-                .subscribe(new DefaultSubscriber<UserEntity>() {
-                    @Override
-                    public void _onNext(UserEntity entity) {
-                        SP.put("", mContext, "userName", entity.name);
-                    }
-                });
-
-    }
 
     //设置商品适配器
     private void setAdapter() {
@@ -108,7 +93,7 @@ public class ThirdFragment extends MBasicRefreshFragment {
                             mAdapter.addAll(goodsEntityList);
                             mIsRefresh = false;
                         }
-                        mMsvLayout.content();
+                        mEsvLayout.content();
                         mRecyclerView.refreshComplete();
                         mRecyclerView.loadMoreComplete();
                     }
@@ -120,7 +105,7 @@ public class ThirdFragment extends MBasicRefreshFragment {
         super.onRefresh();
         mRecyclerView.setNoMore(false);
         mPageNum = 1;
-        initData();
+        loadData();
     }
 
     @Override

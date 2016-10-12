@@ -3,14 +3,19 @@ package com.marno.mbasiclib.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.telephony.TelephonyManager;
 
 /**
  * Created by 李刚 on 2016/3/25/10:46.
  * 网络相关辅助类
  */
 public class NetUtil {
+
     /**
-     * 判断是否有网络连接
+     * isNetConnected
+     *
+     * @param context
+     * @return boolean
      */
     public static boolean isNetConnected(Context context) {
         boolean ret = false;
@@ -28,8 +33,28 @@ public class NetUtil {
         return ret;
     }
 
+
     /**
-     * 判断是否是Wifi连接
+     * is Wifi enable
+     *
+     * @param context
+     * @return boolean
+     */
+    public static boolean isWifiEnabled(Context context) {
+        ConnectivityManager mgrConn = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        TelephonyManager mgrTel = (TelephonyManager) context
+                .getSystemService(Context.TELEPHONY_SERVICE);
+        return ((mgrConn.getActiveNetworkInfo() != null && mgrConn
+                .getActiveNetworkInfo().getState() == NetworkInfo.State.CONNECTED) || mgrTel
+                .getNetworkType() == TelephonyManager.NETWORK_TYPE_UMTS);
+    }
+
+    /**
+     * isWifi
+     *
+     * @param context
+     * @return boolean
      */
     public static boolean isWifi(Context context) {
         boolean ret = false;
@@ -43,4 +68,42 @@ public class NetUtil {
         ret = manager.getActiveNetworkInfo().getType() == ConnectivityManager.TYPE_WIFI;
         return ret;
     }
+
+
+    /**
+     * is2G
+     *
+     * @param context
+     * @return boolean
+     */
+    public static boolean is2G(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
+        if (activeNetInfo != null
+                && (activeNetInfo.getSubtype() == TelephonyManager.NETWORK_TYPE_EDGE
+                || activeNetInfo.getSubtype() == TelephonyManager.NETWORK_TYPE_GPRS || activeNetInfo
+                .getSubtype() == TelephonyManager.NETWORK_TYPE_CDMA)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * check is3G
+     *
+     * @param context
+     * @return boolean
+     */
+    public static boolean is3G(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
+        if (activeNetInfo != null
+                && activeNetInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
+            return true;
+        }
+        return false;
+    }
+
 }

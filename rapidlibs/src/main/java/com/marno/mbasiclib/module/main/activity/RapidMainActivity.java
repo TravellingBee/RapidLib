@@ -17,8 +17,7 @@ import java.util.ArrayList;
  * 快速创建主页布局
  */
 public abstract class RapidMainActivity extends MBasicActivity implements IMainView {
-
-
+    
     public static CommonTabLayout mTabLayout;
 
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
