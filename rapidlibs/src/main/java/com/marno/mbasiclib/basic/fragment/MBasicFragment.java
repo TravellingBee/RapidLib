@@ -49,7 +49,7 @@ public abstract class MBasicFragment extends Fragment implements XRecyclerView.L
     /**
      * 初始化数据
      */
-    protected abstract void initData();
+    protected abstract void loadData();
 
     @Override
     public void onAttach(Context context) {
@@ -130,7 +130,7 @@ public abstract class MBasicFragment extends Fragment implements XRecyclerView.L
     public void onHiddenChanged(boolean hidden) {
         if (!hidden && mIsFirstShow) {
             mIsFirstShow = false;
-            initData();
+            loadData();
         }
     }
 

@@ -18,7 +18,7 @@ public class ThirdActivity extends RapidMainActivity {
     }
 
     @Override
-    protected void initData() {
+    protected void loadData() {
 
     }
 

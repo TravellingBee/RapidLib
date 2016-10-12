@@ -12,7 +12,7 @@ public abstract class MBasicPagerFragment extends MBasicFragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && mIsFirstShow) {
             mIsFirstShow = false;
-            initData();
+            loadData();
         }
     }
 }

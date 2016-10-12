@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 
+import com.marno.easystatelibrary.EasyStatusView;
 import com.marno.mbasiclib.adapter.RecyclerAdapter;
 import com.marno.mbasiclib.basic.fragment.MBasicPagerFragment;
 import com.marno.mbasiclib.utils.ToastUtil;
-import com.marno.mbasiclib.widgets.MultipleStatusView;
 import com.marno.mbasiclib.widgets.xrecyclerview.XRecyclerView;
 import com.utouu.test.R;
 import com.utouu.test.adapter.GoodsGridRecyclerAdapter;
@@ -30,8 +30,8 @@ public class ThirdFragment extends MBasicPagerFragment {
 
     @BindView(R.id.content_view)
     XRecyclerView mRecyclerView;
-    @BindView(R.id.msvLayout)
-    MultipleStatusView mMsvLayout;
+    @BindView(R.id.esvLayout)
+    EasyStatusView mEsvLayout;
 
     private int mPageNum = 1;
     private int mAllPages;
@@ -54,7 +54,7 @@ public class ThirdFragment extends MBasicPagerFragment {
     protected void initView(View view, Bundle savedInstanceState) {
         mParam_goodsList = new HashMap<>();
 
-        mMsvLayout.loading();
+        mEsvLayout.loading();
         mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
         mRecyclerView.setLoadingListener(this);
 
@@ -63,7 +63,7 @@ public class ThirdFragment extends MBasicPagerFragment {
 
 
     // 加载数据
-    protected void initData() {
+    protected void loadData() {
         initGoodsData(mPageNum);
     }
 
@@ -93,7 +93,7 @@ public class ThirdFragment extends MBasicPagerFragment {
                             mAdapter.addAll(goodsEntityList);
                             mIsRefresh = false;
                         }
-                        mMsvLayout.content();
+                        mEsvLayout.content();
                         mRecyclerView.refreshComplete();
                         mRecyclerView.loadMoreComplete();
                     }
@@ -105,7 +105,7 @@ public class ThirdFragment extends MBasicPagerFragment {
         super.onRefresh();
         mRecyclerView.setNoMore(false);
         mPageNum = 1;
-        initData();
+        loadData();
     }
 
     @Override

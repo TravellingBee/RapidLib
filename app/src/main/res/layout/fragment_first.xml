@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.marno.mbasiclib.widgets.MultipleStatusView
-    android:id="@+id/msvLayout"
+<com.marno.easystatelibrary.EasyStatusView
+    android:id="@+id/esvLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:esv_empty="@layout/layout_empty"
+    app:esv_loading="@layout/layout_loading"
+    app:esv_noNet="@layout/layout_no_network"
+    app:esv_error="@layout/layout_error"
     android:layout_height="match_parent"
     tools:context=".module.main.MainActivity">
 
@@ -12,4 +17,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</com.marno.mbasiclib.widgets.MultipleStatusView>
+</com.marno.easystatelibrary.EasyStatusView>

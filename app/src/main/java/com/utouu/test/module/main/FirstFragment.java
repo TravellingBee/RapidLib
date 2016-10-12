@@ -7,13 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.marno.easystatelibrary.EasyStatusView;
 import com.marno.mbasiclib.adapter.RecyclerAdapter;
 import com.marno.mbasiclib.adapter.RecyclerAdapterHelper;
 import com.marno.mbasiclib.basic.fragment.MBasicPagerFragment;
-import com.marno.mbasiclib.manager.BannerManager;
 import com.marno.mbasiclib.manager.GlideManager;
-import com.marno.mbasiclib.widgets.MultipleStatusView;
 import com.marno.mbasiclib.widgets.xrecyclerview.ProgressStyle;
 import com.marno.mbasiclib.widgets.xrecyclerview.XRecyclerView;
 import com.utouu.test.R;
@@ -28,6 +26,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import cn.bingoogolapple.bgabanner.BGABanner;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -40,10 +39,11 @@ public class FirstFragment extends MBasicPagerFragment {
 
     @BindView(R.id.content_view)
     XRecyclerView mRecyclerView;
-    @BindView(R.id.msvLayout)
-    MultipleStatusView mMsvLayout;
+    @BindView(R.id.esvLayout)
+    EasyStatusView mEsvLayout;
+
     private RecyclerAdapter<TestEntity> mAdapter;
-    private ConvenientBanner mBanner;
+    private BGABanner mBanner;
 
     public static FirstFragment newIns() {
         return new FirstFragment();
@@ -53,7 +53,7 @@ public class FirstFragment extends MBasicPagerFragment {
     public void onResume() {
         super.onResume();
         if (mBanner != null) {
-            mBanner.startTurning(3000);
+            mBanner.startAutoPlay();
         }
     }
 
@@ -61,7 +61,7 @@ public class FirstFragment extends MBasicPagerFragment {
     public void onPause() {
         super.onPause();
         if (mBanner != null) {
-            mBanner.stopTurning();
+            mBanner.stopAutoPlay();
         }
     }
 
@@ -72,7 +72,7 @@ public class FirstFragment extends MBasicPagerFragment {
 
 
     @Override
-    protected void initData() {
+    protected void loadData() {
         ArrayList<TestEntity> entities = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
             entities.add(new TestEntity(i + "测试数据", R.drawable.avater));
@@ -85,7 +85,7 @@ public class FirstFragment extends MBasicPagerFragment {
                 .subscribe(new Action1<ArrayList<TestEntity>>() {
                     @Override
                     public void call(ArrayList<TestEntity> entityArrayList) {
-                        mMsvLayout.content();
+                        mEsvLayout.content();
                         if (mIsRefresh) mAdapter.clear();
                         mAdapter.addAll(entityArrayList);
                         mIsRefresh = false;
@@ -95,7 +95,7 @@ public class FirstFragment extends MBasicPagerFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        mMsvLayout.loading();
+        mEsvLayout.loading();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         mRecyclerView.setLoadingListener(this);
@@ -126,17 +126,27 @@ public class FirstFragment extends MBasicPagerFragment {
     //设置banner
     private void setBanner() {
         View bannerView = LayoutInflater.from(mContext).inflate(R.layout.layout_banner, null);
-        mBanner = (ConvenientBanner) bannerView.findViewById(R.id.banner);
+        mBanner = (BGABanner) bannerView.findViewById(R.id.banner);
 
-        mBanner.setPageIndicator(new int[]{
-                R.drawable.shape_indicator, R.drawable.shape_indicator_selected})
-                .setPageIndicatorAlign(
-                        ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL);
+        //mBanner.setPageIndicator(new int[]{
+        //        R.drawable.shape_indicator, R.drawable.shape_indicator_selected})
+        //        .setPageIndicatorAlign(
+        //                ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL);
+        //BannerManager.showBanner(mBanner, images);
         List<Integer> images = Arrays.asList(R.drawable.banner1, R.drawable.banner2, R.drawable.banner3);
-        BannerManager.showBanner(mBanner, images);
+//        List<Integer> images = Arrays.asList(R.drawable.banner1);
+        List<String> titles = Arrays.asList("点击跳转", "点击跳转", "点击跳转");
+
+        mBanner.setAdapter((banner, view, model, position) -> {
+            GlideManager.loadImg(model, (ImageView) view);
+        });
+
+//        mBanner.setData(images, null);
+        mBanner.setData(images, titles);
 
         mRecyclerView.addHeaderView(bannerView);
-        mBanner.setOnItemClickListener(position -> {
+
+        mBanner.setOnItemClickListener((banner, view, model, position) -> {
             ActivityUtil.to(mContext, ThirdActivity.class);
         });
     }
@@ -149,7 +159,7 @@ public class FirstFragment extends MBasicPagerFragment {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(s -> {
-                    initData();
+                    loadData();
                     mRecyclerView.refreshComplete();
                 });
     }

@@ -54,7 +54,7 @@ public abstract class MBasicActivity extends AppCompatActivity   implements XRec
     /*
      * load data in onResume
      */
-    protected abstract void initData();
+    protected abstract void loadData();
 
     /**
      * init activity view
@@ -95,7 +95,7 @@ public abstract class MBasicActivity extends AppCompatActivity   implements XRec
     protected void onResume() {
         if (mIsFirstShow) {
             mIsFirstShow = false;
-            initData();
+            loadData();
         }
         super.onResume();
         lifecycleSubject.onNext(ActivityEvent.RESUME);

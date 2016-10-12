@@ -27,7 +27,7 @@ public class SecondFragment extends MBasicPagerFragment {
     }
 
     @Override
-    protected void initData() {
+    protected void loadData() {
     }
 
     @Override

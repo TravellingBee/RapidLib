@@ -24,7 +24,7 @@ public class FourthFragment extends MBasicPagerFragment {
     }
 
     @Override
-    protected void initData() {
+    protected void loadData() {
 
     }
 }
