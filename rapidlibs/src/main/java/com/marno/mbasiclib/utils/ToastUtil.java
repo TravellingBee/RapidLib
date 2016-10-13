@@ -1,16 +1,8 @@
 package com.marno.mbasiclib.utils;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.v7.widget.CardView;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.marno.mbasiclib.R;
 
 /**
  * Created by 李刚 on 2016/1/19.
@@ -63,26 +55,26 @@ public class ToastUtil {
 
 
     private static void show(int icon, int bgColor, int gravity, int xOffset, int yOffiset, String content) {
-        if (mContext == null)
-            throw new NullPointerException(ExceptionRemind);
-
-        int duration = content.length() > 10 ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT;
-
-        View view = LayoutInflater.from(mContext).inflate(R.layout.rapid_layout_common_toast, null);
-        TextView tvToast = (TextView) view.findViewById(R.id.tv_content_toast);
-        CardView llayoutBg = (CardView) view.findViewById(R.id.llayout_bg_toast);
-        ImageView ivIcon = (ImageView) view.findViewById(R.id.iv_icon_toast);
-
-        llayoutBg.setCardBackgroundColor(bgColor);
-        ivIcon.setImageResource(icon);
-        tvToast.setText(content);
-
-        if (mCustomToast == null) mCustomToast = new Toast(mContext);
-
-        mCustomToast.setGravity(gravity, xOffset, yOffiset);
-        mCustomToast.setView(view);
-        mCustomToast.setDuration(duration);
-        mCustomToast.show();
+//        if (mContext == null)
+//            throw new NullPointerException(ExceptionRemind);
+//
+//        int duration = content.length() > 10 ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT;
+//
+//        View view = LayoutInflater.from(mContext).inflate(R.layout.rapid_layout_common_toast, null);
+//        TextView tvToast = (TextView) view.findViewById(R.id.tv_content_toast);
+//        CardView llayoutBg = (CardView) view.findViewById(R.id.llayout_bg_toast);
+//        ImageView ivIcon = (ImageView) view.findViewById(R.id.iv_icon_toast);
+//
+//        llayoutBg.setCardBackgroundColor(bgColor);
+//        ivIcon.setImageResource(icon);
+//        tvToast.setText(content);
+//
+//        if (mCustomToast == null) mCustomToast = new Toast(mContext);
+//
+//        mCustomToast.setGravity(gravity, xOffset, yOffiset);
+//        mCustomToast.setView(view);
+//        mCustomToast.setDuration(duration);
+//        mCustomToast.show();
     }
 
     /**
@@ -135,7 +127,8 @@ public class ToastUtil {
      * 显示成功的toast
      */
     public static void success(String content) {
-        showAtCenterBottom(R.drawable.success, Color.parseColor(MATERIAL_GREEN), content);
+        systemToast(content);
+//        showAtCenterBottom(R.drawable.success, Color.parseColor(MATERIAL_GREEN), content);
     }
 
     /**
@@ -144,7 +137,8 @@ public class ToastUtil {
      * @param content
      */
     public static void error(String content) {
-        showAtCenterBottom(R.drawable.fail,Color.parseColor(MATERIAL_RED), content);
+        systemToast(content);
+//        showAtCenterBottom(R.drawable.fail,Color.parseColor(MATERIAL_RED), content);
     }
 
     /**
@@ -153,7 +147,8 @@ public class ToastUtil {
      * @param content
      */
     public static void warn(String content) {
-        showAtCenterBottom(R.drawable.warn, Color.parseColor(MATERIAL_YELLOW), content);
+        systemToast(content);
+//        showAtCenterBottom(R.drawable.warn, Color.parseColor(MATERIAL_YELLOW), content);
     }
 
     /**
@@ -162,7 +157,8 @@ public class ToastUtil {
      * @param content
      */
     public static void remind(String content) {
-        showAtCenterBottom(R.drawable.remind, Color.parseColor(MATERIAL_DEEP_ORANGE), content);
+        systemToast(content);
+//        showAtCenterBottom(R.drawable.remind, Color.parseColor(MATERIAL_DEEP_ORANGE), content);
     }
 
     /**
@@ -171,7 +167,8 @@ public class ToastUtil {
      * @param content
      */
     public static void common(String content) {
-        showAtCenterBottom(R.drawable.common, Color.parseColor(MATERIAL_BLUE_GREY), content);
+        systemToast(content);
+//        showAtCenterBottom(R.drawable.common, Color.parseColor(MATERIAL_BLUE_GREY), content);
     }
 
 }

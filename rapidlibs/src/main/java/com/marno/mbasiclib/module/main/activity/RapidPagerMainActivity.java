@@ -23,7 +23,7 @@ import java.util.List;
 public abstract class RapidPagerMainActivity extends MBasicActivity implements IMainView{
 
 
-    public static CommonTabLayout mTabLayout;
+    public CommonTabLayout mTabLayout;
     protected ViewPager mViewPager;
 
 

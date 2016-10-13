@@ -127,7 +127,6 @@ public class FirstFragment extends MBasicPagerFragment {
     private void setBanner() {
         View bannerView = LayoutInflater.from(mContext).inflate(R.layout.layout_banner, null);
         mBanner = (BGABanner) bannerView.findViewById(R.id.banner);
-
         //mBanner.setPageIndicator(new int[]{
         //        R.drawable.shape_indicator, R.drawable.shape_indicator_selected})
         //        .setPageIndicatorAlign(

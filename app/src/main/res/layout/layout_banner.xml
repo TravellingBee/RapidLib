@@ -18,6 +18,6 @@
         app:banner_pointDrawable="@drawable/selecter_point"
         app:banner_tipTextSize="12sp"
         app:banner_tipTextColor="@color/colorPrimary"
-        app:banner_transitionEffect="depth"/>
+        app:banner_transitionEffect="defaultEffect"/>
 
 </LinearLayout>

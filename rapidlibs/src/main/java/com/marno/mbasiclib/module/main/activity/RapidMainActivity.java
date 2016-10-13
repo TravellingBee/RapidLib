@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public abstract class RapidMainActivity extends MBasicActivity implements IMainView {
     
-    public static CommonTabLayout mTabLayout;
+    public CommonTabLayout mTabLayout;
 
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 

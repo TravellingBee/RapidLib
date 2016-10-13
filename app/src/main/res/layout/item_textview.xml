@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/dp4"
-    android:layout_marginLeft="@dimen/dp8"
-    android:layout_marginRight="@dimen/dp8"
-    android:layout_marginTop="@dimen/dp4"
+    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="4dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     app:cardCornerRadius="8dp"
-    app:cardElevation="@dimen/dp2">
+    app:cardElevation="2dp">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -20,12 +20,12 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="@dimen/dp8">
+        android:padding="8dp">
 
         <ImageView
             android:id="@+id/iv_shape"
-            android:layout_width="@dimen/dp50"
-            android:layout_height="@dimen/dp50"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             tools:background="@android:color/holo_blue_bright"/>
 
         <TextView

@@ -79,13 +79,13 @@ public class AVLoadingIndicatorView extends View{
     //indicators
     public static final int BallPulse=0;
     public static final int BallGridPulse=1;
-    public static final int BallClipRotate=2;
+    public static final int BallClipRotate=1<<1;
     public static final int BallClipRotatePulse=3;
-    public static final int SquareSpin=4;
+    public static final int SquareSpin=1<<2;
     public static final int BallClipRotateMultiple=5;
     public static final int BallPulseRise=6;
     public static final int BallRotate=7;
-    public static final int CubeTransition=8;
+    public static final int CubeTransition=1<<8;
     public static final int BallZigZag=9;
     public static final int BallZigZagDeflect=10;
     public static final int BallTrianglePath=11;
@@ -93,7 +93,7 @@ public class AVLoadingIndicatorView extends View{
     public static final int LineScale=13;
     public static final int LineScaleParty=14;
     public static final int BallScaleMultiple=15;
-    public static final int BallPulseSync=16;
+    public static final int BallPulseSync=1<<4;
     public static final int BallBeat=17;
     public static final int LineScalePulseOut=18;
     public static final int LineScalePulseOutRapid=19;
