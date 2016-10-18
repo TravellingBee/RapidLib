@@ -50,6 +50,7 @@ abstract class BaseRecyclerAdapter<T, H extends RecyclerAdapterHelper> extends R
         int layoutResId;
         if (getViewTypeCount() > 1) {
             layoutResId = getLayoutResId(getItemViewType(viewType));
+//            layoutResId = getLayoutResId(viewType);
         } else {
             layoutResId = layoutResIds[0];
         }
