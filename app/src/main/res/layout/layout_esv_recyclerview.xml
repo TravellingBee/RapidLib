@@ -10,6 +10,6 @@
     app:esv_loading="@layout/layout_loading"
     app:esv_noNet="@layout/layout_no_network">
 
-    <include layout="@layout/rapid_layout_default_refresh_recyclerview"/>
+    <include layout="@layout/rapid_layout_refresh_load_recyclerview"/>
 
 </com.marno.easystatelibrary.EasyStatusView>

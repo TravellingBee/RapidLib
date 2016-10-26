@@ -12,9 +12,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.marno.easystatelibrary.EasyStatusView;
 import com.marno.easyutilcode.IntentUtil;
 import com.marno.mbasiclib.manager.GlideManager;
-import com.marno.mbasiclib.module.RapidRefreshAndLoadFragment;
 import com.utouu.test.R;
 import com.utouu.test.adapter.HomeAdapter;
+import com.utouu.test.base.BaseCustomRefreshHeaderFragment;
 import com.utouu.test.data.entity.TestEntity;
 import com.utouu.test.data.retrofit.DefaultSubscriber;
 import com.utouu.test.module.third.ThirdActivity;
@@ -34,9 +34,11 @@ import rx.schedulers.Schedulers;
 /**
  * Created by marno on 2016/8/23/15:20.
  */
-public class FirstFragment extends RapidRefreshAndLoadFragment {
+public class FirstFragment extends BaseCustomRefreshHeaderFragment {
 
     @BindView(R.id.esv_layout) EasyStatusView mEsvLayout;
+    @BindView(R.id.rv_content) RecyclerView mRecyclerView;
+    @BindView(R.id.ptr_layout) PtrFrameLayout mPtrLayout;
     private BGABanner mBanner;
 
     public static FirstFragment newIns() {
@@ -92,10 +94,8 @@ public class FirstFragment extends RapidRefreshAndLoadFragment {
     }
 
     @Override
-    protected void initView(View view, Bundle savedInstanceState) {
+    protected void _initView(View view, Bundle savedInsanceState) {
         mEsvLayout.loading();
-        super.initView(view,savedInstanceState);
-
         setBanner();
     }
 
@@ -106,21 +106,18 @@ public class FirstFragment extends RapidRefreshAndLoadFragment {
         mBanner = (BGABanner) bannerView.findViewById(R.id.banner);
 
         List<Integer> images = Arrays.asList(R.drawable.banner1, R.drawable.banner2, R.drawable.banner3);
-        // List<Integer> images = Arrays.asList(R.drawable.banner1);
-        List<String> titles = Arrays.asList("点击跳转", "点击跳转", "点击跳转");
+        List<String> titles = Arrays.asList("点击跳转1", "点击跳转2", "点击跳转3");
 
         mBanner.setAdapter((banner, view, model, position) -> {
             GlideManager.loadImg(model, (ImageView) view);
         });
 
-        // mBanner.setData(images, null);
         mBanner.setData(images, titles);
-
-        mAdapter.addHeaderView(bannerView);
-
         mBanner.setOnItemClickListener((banner, view, model, position) -> {
             IntentUtil.to(mContext, ThirdActivity.class);
         });
+
+        mAdapter.addHeaderView(bannerView);
     }
 
     @Override
@@ -134,6 +131,16 @@ public class FirstFragment extends RapidRefreshAndLoadFragment {
     }
 
     @Override
+    public RecyclerView getRecyclerView() {
+        return mRecyclerView;
+    }
+
+    @Override
+    public PtrFrameLayout getPtrView() {
+        return mPtrLayout;
+    }
+
+    @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
         loadData();
     }
@@ -142,4 +149,5 @@ public class FirstFragment extends RapidRefreshAndLoadFragment {
     public void onLoadMoreRequested() {
         loadData();
     }
+
 }

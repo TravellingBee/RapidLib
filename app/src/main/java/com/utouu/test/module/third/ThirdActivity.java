@@ -4,9 +4,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 import com.flyco.tablayout.CommonTabLayout;
-import com.marno.mbasiclib.module.RapidMainActivity;
+import com.marno.mbasiclib.module.activity.RapidMainActivity;
 import com.utouu.test.R;
-import com.utouu.test.module.main.FirstFragment;
 import com.utouu.test.module.main.ThirdFragment;
 
 import java.util.ArrayList;
@@ -50,9 +49,9 @@ public class ThirdActivity extends RapidMainActivity {
     @Override
     public ArrayList<Fragment> initFragments() {
         mFragments.add(ThirdFragment.newIns());
-        mFragments.add(FirstFragment.newIns());
+        mFragments.add(ContentFragment2.newIns());
         mFragments.add(ThirdFragment.newIns());
-        mFragments.add(FirstFragment.newIns());
+        mFragments.add(ContentFragment3.newIns());
         return mFragments;
     }
 

@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 import com.flyco.tablayout.CommonTabLayout;
-import com.marno.mbasiclib.module.RapidPagerMainActivity;
+import com.marno.mbasiclib.module.activity.RapidPagerMainActivity;
 import com.utouu.test.R;
 
 import java.util.ArrayList;

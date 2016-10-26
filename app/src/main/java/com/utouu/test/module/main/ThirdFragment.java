@@ -9,9 +9,9 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.marno.easystatelibrary.EasyStatusView;
 import com.marno.easyutilcode.ToastUtil;
-import com.marno.mbasiclib.module.RapidRefreshAndLoadFragment;
 import com.utouu.test.R;
 import com.utouu.test.adapter.GoodsGridRecyclerAdapter;
+import com.utouu.test.base.BaseDefaultRefreshHeaderFragment;
 import com.utouu.test.data.entity.GoodsEntity;
 import com.utouu.test.data.entity.GoodsList;
 import com.utouu.test.data.entity.GoodsListEntity;
@@ -28,9 +28,11 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 /**
  * Created by marno on 2016/8/26/11:01.
  */
-public class ThirdFragment extends RapidRefreshAndLoadFragment {
+public class ThirdFragment extends BaseDefaultRefreshHeaderFragment {
 
     @BindView(R.id.esv_layout) EasyStatusView mEsvLayout;
+    @BindView(R.id.rv_content) RecyclerView mRecyclerView;
+    @BindView(R.id.ptr_layout) PtrFrameLayout mPtrLayout;
 
     private int mPageNum = 1;
     private int mAllPages;
@@ -48,21 +50,10 @@ public class ThirdFragment extends RapidRefreshAndLoadFragment {
     }
 
     @Override
-    protected void initView(View view, Bundle savedInstanceState) {
+    protected void _initView(View view, Bundle savedInsanceState) {
         mEsvLayout.loading();
-        super.initView(view, savedInstanceState);
         mParam_goodsList = new HashMap<>();
-//
-//        StoreHouseHeader header = new StoreHouseHeader(mContext);
-//        header.initWithString("RapidLibs");
-//        header.setPadding(0, DimensUtil.dp2px(15, mContext), 0, 0);
-//        header.setTextColor(Color.parseColor("#333333"));
-//
-//        mPtrLayout.setHeaderView(header);
-//        mPtrLayout.addPtrUIHandler(header);
-
     }
-
 
     // 加载数据
     protected void loadData() {
@@ -104,6 +95,17 @@ public class ThirdFragment extends RapidRefreshAndLoadFragment {
     }
 
     @Override
+    public RecyclerView getRecyclerView() {
+        return mRecyclerView;
+    }
+
+    @Override
+    public PtrFrameLayout getPtrView() {
+        return mPtrLayout;
+    }
+
+
+    @Override
     public void onLoadMoreRequested() {
         mPageNum++;
         if (mPageNum > mAllPages) {
@@ -113,7 +115,6 @@ public class ThirdFragment extends RapidRefreshAndLoadFragment {
         }
         initGoodsData(mPageNum);
     }
-
 
     @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
