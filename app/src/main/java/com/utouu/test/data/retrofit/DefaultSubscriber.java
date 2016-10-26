@@ -3,8 +3,8 @@ package com.utouu.test.data.retrofit;
 import android.accounts.NetworkErrorException;
 
 import com.google.gson.JsonSyntaxException;
-import com.marno.mbasiclib.utils.MLog;
-import com.marno.mbasiclib.utils.ToastUtil;
+import com.marno.easyutilcode.ToastUtil;
+import com.marno.mbasiclib.manager.MLog;
 import com.utouu.test.data.exception.AccountsException;
 
 import java.net.ConnectException;
@@ -28,7 +28,7 @@ public abstract class DefaultSubscriber<T> extends rx.Subscriber<T> {
         String reason = "";
         if (e instanceof AccountsException) {//账户异常
             reason = "账户异常";
-            ToastUtil.remind("登录失效，请重新登录");
+            ToastUtil.show("登录失效，请重新登录");
         } else if (e instanceof JsonSyntaxException) {//数据格式化错误
             reason = "数据格式化错误";
         } else if (e instanceof HttpException) {// http异常
@@ -37,7 +37,7 @@ public abstract class DefaultSubscriber<T> extends rx.Subscriber<T> {
             reason = "未连接网络或DNS错误";
         } else if (e instanceof NetworkErrorException) {
             reason = "网络错误";
-            ToastUtil.warn("网络错误");
+            ToastUtil.show("网络错误");
         } else if (e instanceof SocketException) {
             reason = "连接超时";
         } else {

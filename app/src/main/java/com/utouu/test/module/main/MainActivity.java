@@ -3,7 +3,8 @@ package com.utouu.test.module.main;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
-import com.marno.mbasiclib.module.main.activity.RapidPagerMainActivity;
+import com.flyco.tablayout.CommonTabLayout;
+import com.marno.mbasiclib.module.RapidPagerMainActivity;
 import com.utouu.test.R;
 
 import java.util.ArrayList;
@@ -18,13 +19,13 @@ public class MainActivity extends RapidPagerMainActivity {
 
     @Override
     public String[] getTabNameArray() {
-        return new String[]{"新闻", "视频", "图片", "我的"};
+        return new String[]{"新闻", "图片", "我的"};
     }
 
     @NonNull
     @Override
     public int[] getTabUnselectedIcon() {
-        return new int[]{R.drawable.ic_news, R.drawable.ic_video,
+        return new int[]{R.drawable.ic_news,
                 R.drawable.ic_image, R.drawable.ic_me};
     }
 
@@ -32,22 +33,22 @@ public class MainActivity extends RapidPagerMainActivity {
     @Override
     public int[] getTabSelectedIcon() {
         return new int[]{
-            R.drawable.ic_news_selected, R.drawable.ic_video_selected,
-                    R.drawable.ic_image_selected, R.drawable.ic_me_selected};
+                R.drawable.ic_news_selected,
+                R.drawable.ic_image_selected, R.drawable.ic_me_selected};
     }
 
     @NonNull
     @Override
     public ArrayList<Fragment> initFragments() {
         mFragments.add(FirstFragment.newIns());
-        mFragments.add(SecondFragment.newIns());
         mFragments.add(ThirdFragment.newIns());
         mFragments.add(FirstFragment.newIns());
         return mFragments;
     }
 
+    //如果需要tab其他属性，需要实现该方法
     @Override
-    public void setTab() {
+    public void setTab(CommonTabLayout tabLayout) {
 
     }
 

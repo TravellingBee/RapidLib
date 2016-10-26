@@ -3,13 +3,13 @@ package com.utouu.test.module.main;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.marno.easystatelibrary.EasyStatusView;
-import com.marno.mbasiclib.adapter.RecyclerAdapter;
-import com.marno.mbasiclib.basic.fragment.MBasicPagerFragment;
-import com.marno.mbasiclib.utils.ToastUtil;
-import com.marno.mbasiclib.widgets.xrecyclerview.XRecyclerView;
+import com.marno.easyutilcode.ToastUtil;
+import com.marno.mbasiclib.module.RapidRefreshAndLoadFragment;
 import com.utouu.test.R;
 import com.utouu.test.adapter.GoodsGridRecyclerAdapter;
 import com.utouu.test.data.entity.GoodsEntity;
@@ -18,26 +18,23 @@ import com.utouu.test.data.entity.GoodsListEntity;
 import com.utouu.test.data.repository.GoodsRepository;
 import com.utouu.test.data.retrofit.DefaultSubscriber;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
+import in.srain.cube.views.ptr.PtrFrameLayout;
 
 /**
  * Created by marno on 2016/8/26/11:01.
  */
-public class ThirdFragment extends MBasicPagerFragment {
+public class ThirdFragment extends RapidRefreshAndLoadFragment {
 
-    @BindView(R.id.content_view)
-    XRecyclerView mRecyclerView;
-    @BindView(R.id.esvLayout)
-    EasyStatusView mEsvLayout;
+    @BindView(R.id.esv_layout) EasyStatusView mEsvLayout;
 
     private int mPageNum = 1;
     private int mAllPages;
     private HashMap<String, String> mParam_goodsList;
-
-    private RecyclerAdapter<GoodsEntity> mAdapter;
 
 
     public static ThirdFragment newIns() {
@@ -47,31 +44,29 @@ public class ThirdFragment extends MBasicPagerFragment {
 
     @Override
     protected int getLayout() {
-        return R.layout.fragment_first;
+        return R.layout.layout_esv_recyclerview;
     }
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        mParam_goodsList = new HashMap<>();
-
         mEsvLayout.loading();
-        mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
-        mRecyclerView.setLoadingListener(this);
+        super.initView(view, savedInstanceState);
+        mParam_goodsList = new HashMap<>();
+//
+//        StoreHouseHeader header = new StoreHouseHeader(mContext);
+//        header.initWithString("RapidLibs");
+//        header.setPadding(0, DimensUtil.dp2px(15, mContext), 0, 0);
+//        header.setTextColor(Color.parseColor("#333333"));
+//
+//        mPtrLayout.setHeaderView(header);
+//        mPtrLayout.addPtrUIHandler(header);
 
-        setAdapter();
     }
 
 
     // 加载数据
     protected void loadData() {
         initGoodsData(mPageNum);
-    }
-
-
-    //设置商品适配器
-    private void setAdapter() {
-        mAdapter = new GoodsGridRecyclerAdapter(mContext);
-        mRecyclerView.setAdapter(mAdapter);
     }
 
 
@@ -87,36 +82,42 @@ public class ThirdFragment extends MBasicPagerFragment {
                         mAllPages = goodsList.all_page;
                         //商品列表
                         List<GoodsEntity> goodsEntityList = goodsList.data;
-                        if (goodsEntityList.isEmpty()) ToastUtil.remind("暂无该分类产品");
+                        if (goodsEntityList.isEmpty()) ToastUtil.show("暂无该分类产品");
                         else {
-                            if (mIsRefresh) mAdapter.clear();
-                            mAdapter.addAll(goodsEntityList);
-                            mIsRefresh = false;
+                            if (mPtrLayout.isRefreshing()) mAdapter.setNewData(new ArrayList<>());
+                            mAdapter.addData(goodsEntityList);
                         }
                         mEsvLayout.content();
-                        mRecyclerView.refreshComplete();
-                        mRecyclerView.loadMoreComplete();
+                        mPtrLayout.refreshComplete();
                     }
                 });
     }
 
     @Override
-    public void onRefresh() {
-        super.onRefresh();
-        mRecyclerView.setNoMore(false);
-        mPageNum = 1;
-        loadData();
+    public BaseQuickAdapter getAdapter() {
+        return new GoodsGridRecyclerAdapter(mContext);
     }
 
     @Override
-    public void onLoadMore() {
+    public RecyclerView.LayoutManager getLayoutManager() {
+        return new GridLayoutManager(mContext, 2);
+    }
+
+    @Override
+    public void onLoadMoreRequested() {
         mPageNum++;
         if (mPageNum > mAllPages) {
-            ToastUtil.common("没有更多了");
-            mRecyclerView.loadMoreComplete();
-            mRecyclerView.setNoMore(true);
+            ToastUtil.show("没有更多了");
+            mAdapter.loadComplete();
             return;
         }
         initGoodsData(mPageNum);
+    }
+
+
+    @Override
+    public void onRefreshBegin(PtrFrameLayout frame) {
+        mPageNum = 1;
+        loadData();
     }
 }

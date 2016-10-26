@@ -13,8 +13,9 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 /**
- * Created by 李刚 on 2016/3/16/16:16.
- * 沉浸式状态栏
+ * Create by Marno on 2015/3/20 14:29
+ * Function：
+ * Desc：
  */
 public class TintStatusBar {
 

@@ -44,10 +44,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".module.second.SecondActivity"
-            android:theme="@style/SwipeBackActivityTheme">
+            android:name=".module.second.SecondBackActivity"
+            android:theme="@style/AppTheme.SwipeBack">
         </activity>
-        <activity android:name=".module.third.ThirdActivity"/>
+        <activity
+            android:name=".module.third.ThirdActivity"
+            android:theme="@style/AppTheme.SwipeBack"/>
     </application>
 
 </manifest>
