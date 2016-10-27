@@ -13,7 +13,7 @@ import com.marno.mbasiclib.interfaces.ILoadView;
  */
 
 public abstract class RapidRefreshAndLoadActivity extends RapidRefreshActivity implements ILoadView {
-    protected RecyclerView mRecyclerView;
+    protected RecyclerView _mRecyclerView;
 
     protected BaseQuickAdapter mAdapter;
 
@@ -21,20 +21,20 @@ public abstract class RapidRefreshAndLoadActivity extends RapidRefreshActivity i
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
 
-        mRecyclerView = getRecyclerView();
+        _mRecyclerView = getRecyclerView();
         RecyclerView.LayoutManager layoutManager = getLayoutManager();
 
-        if (null != layoutManager && null != mRecyclerView)
-            mRecyclerView.setLayoutManager(layoutManager);
+        if (null != layoutManager && null != _mRecyclerView)
+            _mRecyclerView.setLayoutManager(layoutManager);
 
         setAdapter();
     }
 
     private void setAdapter() {
         mAdapter = getAdapter();
-        if (null != mAdapter) {
+        if (null != mAdapter && null != _mRecyclerView) {
             mAdapter.setOnLoadMoreListener(this);
-            mRecyclerView.setAdapter(mAdapter);
+            _mRecyclerView.setAdapter(mAdapter);
         }
     }
 }

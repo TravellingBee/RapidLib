@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import com.flyco.tablayout.CommonTabLayout;
 import com.marno.mbasiclib.module.activity.RapidPagerMainActivity;
 import com.utouu.test.R;
+import com.utouu.test.module.third.ContentFragment2;
 
 import java.util.ArrayList;
 
@@ -41,8 +42,8 @@ public class MainActivity extends RapidPagerMainActivity {
     @Override
     public ArrayList<Fragment> initFragments() {
         mFragments.add(FirstFragment.newIns());
+        mFragments.add(ContentFragment2.newIns());
         mFragments.add(ThirdFragment.newIns());
-        mFragments.add(FirstFragment.newIns());
         return mFragments;
     }
 

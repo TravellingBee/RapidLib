@@ -9,8 +9,6 @@ import com.marno.mbasiclib.manager.MLog;
 import com.orhanobut.logger.Logger;
 import com.umeng.analytics.MobclickAgent;
 
-import java.util.List;
-
 /**
  * Created by 李刚 on 2016/8/23/15:22.
  */
@@ -57,7 +55,7 @@ public class MApp extends Application {
             //检测内存泄漏
             //LeakCanary.install(this);
             //捕捉崩溃信息,手机不在控制台时捕捉bug,当开启后导致控制台无法输出异常日志
-            // CrashWoodpecker.fly().to(this);
+//             CrashWoodpecker.flyTo(this);
         } else
             Thread.setDefaultUncaughtExceptionHandler(new MyUnCaughtExceptionHandler());
     }
@@ -96,27 +94,5 @@ public class MApp extends Application {
         return null;
     }
 
-    //判断APP是否在前台显示
-    public static boolean isBackground(Context context) {
-        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
-        for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
-            if (appProcess.processName.equals(context.getPackageName())) {
-                /*
-                BACKGROUND=400 EMPTY=500 FOREGROUND=100
-                GONE=1000 PERCEPTIBLE=130 SERVICE=300 ISIBLE=200
-                 */
-                MLog.i("MApp   >>此appimportace =" + appProcess.importance
-                        + ",context.getClass().getName()=" + context.getClass().getName());
-                if (appProcess.importance != ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
-                    MLog.i("MApp   >>处于后台" + appProcess.processName);
-                    return true;
-                } else {
-                    MLog.i("MApp   >>处于前台" + appProcess.processName);
-                    return false;
-                }
-            }
-        }
-        return false;
-    }
+
 }

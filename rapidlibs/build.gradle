@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.github.dcendents.android-maven'
 
-version = "1.1.0"
+version = "1.1.1"
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -10,7 +10,7 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 5
+        versionCode 6
         versionName version
     }
     buildTypes {
