@@ -74,6 +74,7 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile project(':rapidlibs')
+//    compile 'com.github.MarnonDev:RapidLibs:v1.1.0'
 }
 
 //def releaseTime() {
