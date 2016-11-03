@@ -28,7 +28,13 @@ public abstract class MBasicFragment extends RxFragment {
 
     protected abstract void initView(View view, Bundle savedInstanceState);
 
-    protected abstract void loadData();
+    /**
+     * 需要加载数据时重写此方法
+     */
+    protected void loadData() {
+    }
+
+    ;
 
     @Override
     public void onAttach(Context context) {
