@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.marno.mbasiclib.enums.RxLifeEvent;
+
 import rx.Observable;
 import rx.functions.Func1;
 import rx.subjects.PublishSubject;
@@ -19,99 +21,86 @@ import rx.subjects.PublishSubject;
  */
 
 public abstract class RxFragment extends Fragment {
-    protected final PublishSubject<FragmentEvent> lifecycleSubject = PublishSubject.create();
+    protected final PublishSubject<RxLifeEvent> lifecycleSubject = PublishSubject.create();
 
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        lifecycleSubject.onNext(FragmentEvent.ATTACH);
+        lifecycleSubject.onNext(RxLifeEvent.ATTACH);
     }
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        lifecycleSubject.onNext(FragmentEvent.CREATE);
+        lifecycleSubject.onNext(RxLifeEvent.CREATE);
     }
 
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        lifecycleSubject.onNext(FragmentEvent.CREATE_VIEW);
+        lifecycleSubject.onNext(RxLifeEvent.CREATE_VIEW);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        lifecycleSubject.onNext(FragmentEvent.START);
+        lifecycleSubject.onNext(RxLifeEvent.START);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        lifecycleSubject.onNext(FragmentEvent.RESUME);
+        lifecycleSubject.onNext(RxLifeEvent.RESUME);
     }
 
     @Override
     public void onPause() {
-        lifecycleSubject.onNext(FragmentEvent.PAUSE);
+        lifecycleSubject.onNext(RxLifeEvent.PAUSE);
         super.onPause();
     }
 
     @Override
     public void onStop() {
-        lifecycleSubject.onNext(FragmentEvent.STOP);
+        lifecycleSubject.onNext(RxLifeEvent.STOP);
         super.onStop();
     }
 
     @Override
     public void onDestroyView() {
-        lifecycleSubject.onNext(FragmentEvent.DESTROY_VIEW);
+        lifecycleSubject.onNext(RxLifeEvent.DESTROY_VIEW);
         super.onDestroyView();
     }
 
     @Override
     public void onDestroy() {
-        lifecycleSubject.onNext(FragmentEvent.DESTROY);
+        lifecycleSubject.onNext(RxLifeEvent.DESTROY);
         super.onDestroy();
     }
 
     @Override
     public void onDetach() {
-        lifecycleSubject.onNext(FragmentEvent.DETACH);
+        lifecycleSubject.onNext(RxLifeEvent.DETACH);
         super.onDetach();
     }
 
     //监听Frament声明周期，当Fragment销毁后，停止网络请求
     @NonNull
-    public <T> Observable.Transformer<T, T> bindUntilEvent(@NonNull final FragmentEvent event) {
+    public <T> Observable.Transformer<T, T> bindUntilEvent(@NonNull final RxLifeEvent event) {
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(Observable<T> sourceObservable) {
-                Observable<FragmentEvent> compareLifecycleObservable =
-                        lifecycleSubject.takeFirst(new Func1<FragmentEvent, Boolean>() {
+                Observable<RxLifeEvent> compareLifecycleObservable =
+                        lifecycleSubject.takeFirst(new Func1<RxLifeEvent, Boolean>() {
                             @Override
-                            public Boolean call(FragmentEvent activityLifeCycleEvent) {
+                            public Boolean call(RxLifeEvent activityLifeCycleEvent) {
                                 return activityLifeCycleEvent.equals(event);
                             }
                         });
                 return sourceObservable.takeUntil(compareLifecycleObservable);
             }
         };
-    }
-
-    public enum FragmentEvent {
-        ATTACH,
-        CREATE,
-        CREATE_VIEW,
-        START,
-        RESUME,
-        PAUSE,
-        STOP,
-        DESTROY_VIEW,
-        DESTROY,
-        DETACH
     }
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.marno.easystatelibrary.EasyStatusView;
 import com.marno.easyutilcode.ToastUtil;
+import com.marno.mbasiclib.enums.RxLifeEvent;
 import com.utouu.test.R;
 import com.utouu.test.adapter.GoodsGridRecyclerAdapter;
 import com.utouu.test.base.BaseDefaultRefreshHeaderFragment;
@@ -65,7 +66,7 @@ public class ThirdFragment extends BaseDefaultRefreshHeaderFragment {
     private void initGoodsData(int pageNum) {
         mParam_goodsList.put("page", String.valueOf(pageNum));
         GoodsRepository.getIns().getGoodsList(mParam_goodsList)
-                .compose(bindUntilEvent(FragmentEvent.DESTROY))
+                .compose(bindUntilEvent(RxLifeEvent.DESTROY))
                 .subscribe(new DefaultSubscriber<GoodsListEntity>() {
                     @Override
                     public void _onNext(GoodsListEntity entity) {

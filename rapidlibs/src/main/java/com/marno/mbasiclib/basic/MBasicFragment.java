@@ -21,7 +21,7 @@ public abstract class MBasicFragment extends RxFragment {
     protected String TAG = this.getClass().getSimpleName();
 
     protected Activity mContext;
-    protected boolean mIsFirstShow = true;
+    protected boolean mIsFirstShow;
     private Unbinder mUnbinder;
 
     protected abstract int getLayout();
@@ -34,12 +34,11 @@ public abstract class MBasicFragment extends RxFragment {
     protected void loadData() {
     }
 
-    ;
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         this.mContext = (Activity) context;
+        mIsFirstShow = true;
     }
 
 

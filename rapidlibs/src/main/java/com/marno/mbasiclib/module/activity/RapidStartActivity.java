@@ -16,16 +16,15 @@ import com.marno.mbasiclib.basic.MBasicActivity;
 public class RapidStartActivity extends MBasicActivity {
 
     private String
-            F_RAPID = "rapid",
+            F_RAPID = "rapidFile",
             IS_FIRST_RUN = "isFirstRun",
             VERSION_NAME = "versionName";
 
-    //是否第一次启动app
-    private boolean mIsFirstRun;
-    //上次更新app版本
-    private String mLastVersion;
-    //当前app版本
-    private String mNowVersion;
+
+    private boolean mIsFirstRun; //是否第一次启动app
+
+    private String mLastVersion; //上次更新app版本
+    private String mNowVersion;//当前app版本
 
     @Override
     protected int getLayout() {
@@ -38,10 +37,8 @@ public class RapidStartActivity extends MBasicActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
                 , WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        mIsFirstRun = (boolean) SPUtil
-                .get(F_RAPID, this, IS_FIRST_RUN, true);
-        mLastVersion = (String) SPUtil
-                .get(F_RAPID, this, VERSION_NAME, "1.0.0");
+        mIsFirstRun = (boolean) SPUtil.get(F_RAPID, this, IS_FIRST_RUN, true);
+        mLastVersion = (String) SPUtil.get(F_RAPID, this, VERSION_NAME, "1.0.0");
         mNowVersion = AppUtil.getVersionName(mContext);
     }
 

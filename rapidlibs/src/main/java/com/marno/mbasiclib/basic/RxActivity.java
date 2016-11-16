@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
+import com.marno.mbasiclib.enums.RxLifeEvent;
+
 import rx.Observable;
 import rx.functions.Func1;
 import rx.subjects.PublishSubject;
@@ -15,68 +17,58 @@ import rx.subjects.PublishSubject;
  */
 
 public class RxActivity extends AppCompatActivity {
-    protected final PublishSubject<ActivityEvent> lifecycleSubject = PublishSubject.create();
+    protected final PublishSubject<RxLifeEvent> lifecycleSubject = PublishSubject.create();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        lifecycleSubject.onNext(ActivityEvent.CREATE);
+        lifecycleSubject.onNext(RxLifeEvent.CREATE);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        lifecycleSubject.onNext(ActivityEvent.START);
+        lifecycleSubject.onNext(RxLifeEvent.START);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        lifecycleSubject.onNext(ActivityEvent.RESUME);
+        lifecycleSubject.onNext(RxLifeEvent.RESUME);
     }
 
     @Override
     protected void onPause() {
-        lifecycleSubject.onNext(ActivityEvent.PAUSE);
+        lifecycleSubject.onNext(RxLifeEvent.PAUSE);
         super.onPause();
     }
 
     @Override
     protected void onStop() {
-        lifecycleSubject.onNext(ActivityEvent.STOP);
+        lifecycleSubject.onNext(RxLifeEvent.STOP);
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
-        lifecycleSubject.onNext(ActivityEvent.DESTROY);
+        lifecycleSubject.onNext(RxLifeEvent.DESTROY);
         super.onDestroy();
     }
 
     @NonNull
-    public <T> Observable.Transformer<T, T> bindUntilEvent(@NonNull final ActivityEvent event) {
+    public <T> Observable.Transformer<T, T> bindUntilEvent(@NonNull final RxLifeEvent event) {
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(Observable<T> sourceObservable) {
-                Observable<ActivityEvent> compareLifecycleObservable =
-                        lifecycleSubject.takeFirst(new Func1<ActivityEvent, Boolean>() {
+                Observable<RxLifeEvent> compareLifecycleObservable =
+                        lifecycleSubject.takeFirst(new Func1<RxLifeEvent, Boolean>() {
                             @Override
-                            public Boolean call(ActivityEvent activityLifeCycleEvent) {
+                            public Boolean call(RxLifeEvent activityLifeCycleEvent) {
                                 return activityLifeCycleEvent.equals(event);
                             }
                         });
                 return sourceObservable.takeUntil(compareLifecycleObservable);
             }
         };
-    }
-
-
-    public enum ActivityEvent {
-        CREATE,
-        START,
-        RESUME,
-        PAUSE,
-        STOP,
-        DESTROY
     }
 }
