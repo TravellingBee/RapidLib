@@ -16,7 +16,7 @@ import rx.subjects.PublishSubject;
  * Desc：
  */
 
-public class RxActivity extends AppCompatActivity {
+abstract class RxActivity extends AppCompatActivity {
     protected final PublishSubject<RxLifeEvent> lifecycleSubject = PublishSubject.create();
 
     @Override

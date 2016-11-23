@@ -2,13 +2,13 @@ package com.marno.mbasiclib.module.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.marno.mbasiclib.R;
-import com.marno.mbasiclib.adapter.common.FragmentStatePagerAdapter2;
 import com.marno.mbasiclib.basic.MBasicActivity;
 import com.marno.mbasiclib.entity.TabEntity;
 import com.marno.mbasiclib.interfaces.IMainView;
@@ -22,10 +22,8 @@ import java.util.List;
  */
 public abstract class RapidPagerMainActivity extends MBasicActivity implements IMainView{
 
-
     public CommonTabLayout mTabLayout;
     protected ViewPager mViewPager;
-
 
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
@@ -39,7 +37,6 @@ public abstract class RapidPagerMainActivity extends MBasicActivity implements I
     protected void initView(Bundle savedInstanceState) {
         mTabLayout = (CommonTabLayout) findViewById(R.id.tablayout);
         mViewPager = (ViewPager) findViewById(R.id.pager);
-
         String[] tabNameArray = getTabNameArray();
         int[] tabSelectedIcon = getTabSelectedIcon();
         int[] tabUnselectedIcon = getTabUnselectedIcon();
@@ -61,7 +58,7 @@ public abstract class RapidPagerMainActivity extends MBasicActivity implements I
         }
 
         mViewPager.setOffscreenPageLimit(4);
-        mViewPager.setAdapter(new FragmentStatePagerAdapter2(getSupportFragmentManager()) {
+        mViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public int getCount() {
                 return fragments.size();

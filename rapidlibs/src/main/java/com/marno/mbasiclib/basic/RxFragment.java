@@ -20,7 +20,7 @@ import rx.subjects.PublishSubject;
  * Desc：
  */
 
-public abstract class RxFragment extends Fragment {
+abstract class RxFragment extends Fragment {
     protected final PublishSubject<RxLifeEvent> lifecycleSubject = PublishSubject.create();
 
 

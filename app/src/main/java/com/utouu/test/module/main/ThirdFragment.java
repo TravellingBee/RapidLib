@@ -111,7 +111,7 @@ public class ThirdFragment extends BaseDefaultRefreshHeaderFragment {
         mPageNum++;
         if (mPageNum > mAllPages) {
             ToastUtil.show("没有更多了");
-            mAdapter.loadComplete();
+            mAdapter.loadMoreComplete();
             return;
         }
         initGoodsData(mPageNum);

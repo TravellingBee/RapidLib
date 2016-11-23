@@ -49,7 +49,7 @@ public class ThirdActivity extends RapidMainActivity {
     @Override
     public ArrayList<Fragment> initFragments() {
         mFragments.add(ThirdFragment.newIns());
-        mFragments.add(ContentFragment2.newIns());
+        mFragments.add(ContentFragment3.newIns());
         mFragments.add(ThirdFragment.newIns());
         mFragments.add(ContentFragment3.newIns());
         return mFragments;
