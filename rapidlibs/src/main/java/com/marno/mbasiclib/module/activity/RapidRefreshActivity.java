@@ -3,7 +3,7 @@ package com.marno.mbasiclib.module.activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.marno.mbasiclib.basic.MBasicActivity;
+import com.marno.mbasiclib.basic.BasicActivity;
 import com.marno.mbasiclib.interfaces.IRefreshView;
 
 import in.srain.cube.views.ptr.PtrDefaultHandler;
@@ -14,7 +14,7 @@ import in.srain.cube.views.ptr.PtrUIHandler;
  * Created by marno on 2016/10/26/22:43.
  *  仅需要下拉刷新功能的Activity继承此类
  */
-public abstract class RapidRefreshActivity extends MBasicActivity implements IRefreshView {
+public abstract class RapidRefreshActivity extends BasicActivity implements IRefreshView {
     protected PtrFrameLayout mPtrLayout;
 
     @Override

@@ -9,7 +9,7 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.marno.mbasiclib.R;
-import com.marno.mbasiclib.basic.MBasicActivity;
+import com.marno.mbasiclib.basic.BasicActivity;
 import com.marno.mbasiclib.entity.TabEntity;
 import com.marno.mbasiclib.interfaces.IMainView;
 
@@ -20,7 +20,7 @@ import java.util.List;
  * Created by marno on 2016/8/23/15:20.
  * 快速创建主页布局
  */
-public abstract class RapidPagerMainActivity extends MBasicActivity implements IMainView{
+public abstract class RapidPagerMainActivity extends BasicActivity implements IMainView{
 
     public CommonTabLayout mTabLayout;
     protected ViewPager mViewPager;

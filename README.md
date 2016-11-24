@@ -1,7 +1,7 @@
 # RapidLibs
 --------------------------
 ### Brife
-一套项目级别的综合框架实践，有问题欢迎提issue。
+一套项目级别的综合框架实践，帮助提高开发效率，缩减开发时间，有问题欢迎提issue。
 
 ### Gradle
 
@@ -23,7 +23,8 @@ dependencies {
 
 ### Function
 
-* BasicActivity和BasicFragment重写生命周期
+* 【Basic-Xxxx】开头是通用基类，目前有BasicActivity和BasicFragment
+* 【Rapid-Xxxx】开头的是快速创建常见功能页面
 * 创建支持手势返回的Activity
 * 沉浸式状态栏（一句代码实现）
 * 万能适配器（ListView、GridView，RecyclerView）
@@ -33,7 +34,12 @@ dependencies {
 * manager类是三方库二次封装，目前有GlideManager和MLog(Logger封装)两个类
 * 常用工具类（拆分为 [EasyUtilCode](https://github.com/MarnonDev/EasyUtilCode) 维护），但是默认已经集成在该库中
 * Retrofit请求与Activity、Fragment生命周期绑定，需要手动调用bindUntilEvent()方法
-* 创建常见Activity和Fragment
+
+### TODO List
+- [ ] 快速创建启动页和引导页
+- [ ] 优化刷新和加载页面的代码
+- [ ] 将retrofit二次封装
+- [ ] MVP架构
 
 ### Guide
 

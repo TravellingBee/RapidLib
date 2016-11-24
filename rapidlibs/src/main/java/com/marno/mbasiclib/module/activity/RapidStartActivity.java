@@ -6,14 +6,14 @@ import android.view.WindowManager;
 import com.marno.easyutilcode.AppUtil;
 import com.marno.easyutilcode.SPUtil;
 import com.marno.mbasiclib.R;
-import com.marno.mbasiclib.basic.MBasicActivity;
+import com.marno.mbasiclib.basic.BasicActivity;
 
 /**
  * Create by Marno on 2016/11/2 15:53
  * Function：启动页，引导页
  * Desc：
  */
-public class RapidStartActivity extends MBasicActivity {
+public class RapidStartActivity extends BasicActivity {
 
     private String
             F_RAPID = "rapidFile",

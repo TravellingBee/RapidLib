@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.marno.mbasiclib.basic.MBasicFragment;
+import com.marno.mbasiclib.basic.BasicFragment;
 import com.utouu.test.R;
 
 import butterknife.BindView;
@@ -15,7 +15,7 @@ import butterknife.BindView;
 /**
  * Created by marno on 2016/8/23/15:20.
  */
-public class ContentFragment3 extends MBasicFragment {
+public class ContentFragment3 extends BasicFragment {
     @BindView(R.id.rlayout) RelativeLayout mRlayout;
 
     public static ContentFragment3 newIns() {

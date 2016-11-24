@@ -21,7 +21,7 @@ import butterknife.Unbinder;
  * Created by Marno on 2016/7/18/10:24.
  * All Activity base class
  */
-public abstract class MBasicActivity extends RxActivity {
+public abstract class BasicActivity extends RxActivity {
 
     protected String TAG = this.getClass().getSimpleName();
 

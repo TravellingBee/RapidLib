@@ -4,14 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.marno.easyutilcode.IntentUtil;
-import com.marno.mbasiclib.basic.MBasicActivity;
+import com.marno.mbasiclib.basic.BasicActivity;
 import com.utouu.test.R;
 
 /**
  * Created by marno on 2016/8/23/15:20.
  * 支持滑动返回的Activity，需要在清单中设置透明主题
  */
-public class SecondBackActivity extends MBasicActivity {
+public class SecondBackActivity extends BasicActivity {
 
     //重写此方法开启滑动返回
     @Override

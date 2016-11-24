@@ -3,7 +3,7 @@ package com.marno.mbasiclib.module.fragment;
 import android.os.Bundle;
 import android.view.View;
 
-import com.marno.mbasiclib.basic.MBasicFragment;
+import com.marno.mbasiclib.basic.BasicFragment;
 import com.marno.mbasiclib.interfaces.IRefreshView;
 
 import in.srain.cube.views.ptr.PtrDefaultHandler;
@@ -14,7 +14,7 @@ import in.srain.cube.views.ptr.PtrUIHandler;
  * Created by marno on 2016/10/26/22:38.
  * 仅需要下拉刷新功能的Fragment继承此类
  */
-public abstract class RapidRefreshFragment extends MBasicFragment implements IRefreshView {
+public abstract class RapidRefreshFragment extends BasicFragment implements IRefreshView {
     protected PtrFrameLayout mPtrLayout;
 
     @Override

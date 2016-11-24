@@ -16,7 +16,7 @@ import butterknife.Unbinder;
  * Created by 李刚 on 2016/3/14/13:53.
  * 所有Fragment的基类
  */
-public abstract class MBasicFragment extends RxFragment {
+public abstract class BasicFragment extends RxFragment {
 
     protected String TAG = this.getClass().getSimpleName();
 
