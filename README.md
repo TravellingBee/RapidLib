@@ -1,9 +1,9 @@
-#RapidLibs
+# RapidLibs
 --------------------------
-#### Brife
+### Brife
 一套项目级别的综合框架实践，有问题欢迎提issue。
 
-**1.1 Gradle**
+### Gradle
 
 ```
 allprojects {
@@ -17,10 +17,11 @@ allprojects {
 ```
 dependencies {
     compile 'com.github.MarnonDev:RapidLibs:最新版本号'
+    如：compile 'com.github.MarnonDev:RapidLib.v1.0.0'
 }
 ```
 
-**1.2 Function**
+### Function
 
 * BasicActivity和BasicFragment重写生命周期
 * 创建支持手势返回的Activity
@@ -34,16 +35,19 @@ dependencies {
 * Retrofit请求与Activity、Fragment生命周期绑定，需要手动调用bindUntilEvent()方法
 * 创建常见Activity和Fragment
 
-#### Guide
+### Guide
 
 
-#### Thanks
+### Thanks
 
->* [(https://github.com/ThePacific/adapter](https://github.com/ThePacific/adapter)
->* [https://github.com/H07000223/FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout) 
->* 
+* [https://github.com/CymChad/BaseRecyclerViewAdapterHelper](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)
+* [https://github.com/ThePacific/adapter](https://github.com/ThePacific/adapter)
+* [https://github.com/H07000223/FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)
+* [https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh](https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh)
+* [https://github.com/bingoogolapple/BGABanner-Android](https://github.com/bingoogolapple/BGABanner-Android)
 
-#### About
+
+### About
 
 - 邮箱：marnodev@163.com
 - 简书：[点击关注Marno的简书](http://www.jianshu.com/users/174a09ba6c25)
