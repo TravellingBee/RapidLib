@@ -39,7 +39,7 @@ dependencies {
 - [ ] 快速创建启动页和引导页
 - [ ] 优化刷新和加载页面的代码
 - [ ] 将retrofit二次封装
-- [ * 创建常见Activity和Fragment] MVP架构
+- [ ] MVP架构
 
 ### Guide
 
