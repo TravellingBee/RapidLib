@@ -17,7 +17,7 @@ allprojects {
 ```
 dependencies {
     compile 'com.github.MarnonDev:RapidLibs:最新版本号'
-    如：compile 'com.github.MarnonDev:RapidLib.v1.0.0'
+    如：compile 'com.github.MarnonDev:RapidLibs.v1.0.0'
 }
 ```
 
