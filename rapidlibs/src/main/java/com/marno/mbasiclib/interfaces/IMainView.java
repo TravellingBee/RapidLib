@@ -1,11 +1,9 @@
 package com.marno.mbasiclib.interfaces;
 
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-
 import com.flyco.tablayout.CommonTabLayout;
+import com.marno.mbasiclib.entity.TabEntity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by marno on 2016/8/28/09:29.
@@ -13,35 +11,16 @@ import java.util.ArrayList;
 public interface IMainView {
 
     /**
-     * 添加tab名字
+     * 控制主页面是否可以左右滑动
      *
-     * @return 保存了tab名字的数组
+     * @return true - 可以滑动切换，类似微信;false - 不可滑动切换，类似QQ
      */
-     String[] getTabNameArray();
+    boolean isPager();
 
     /**
-     * 添加tab图标（未选中）
-     *
-     * @return 保存了tab（未选中）图标的数组
+     * 添加tab
      */
-    @NonNull
-    int[] getTabUnselectedIcon();
-
-    /**
-     * 添加tab图标（选中）
-     *
-     * @return 保存了tab（选中）图标的数组
-     */
-    @NonNull
-    int[] getTabSelectedIcon();
-
-    /**
-     * 添加Fragment
-     *
-     * @return 保存fagment的集合
-     */
-    @NonNull
-    ArrayList<Fragment> initFragments();
+    List<TabEntity> getTabEntities();
 
     /**
      * 如果需要手动修改tab的一些属性，可以在这里设置

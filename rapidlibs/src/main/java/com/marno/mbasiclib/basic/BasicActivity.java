@@ -58,6 +58,13 @@ public abstract class BasicActivity extends RxActivity {
     protected void loadData() {
     }
 
+    /**
+     * 执行setContentView()方法前调用
+     */
+    protected void beforeSetView() {
+
+    }
+
     protected abstract void initView(Bundle savedInstanceState);
 
 
@@ -85,6 +92,7 @@ public abstract class BasicActivity extends RxActivity {
         }
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        beforeSetView();
         setContentView(getLayout());
         mUnbinder = ButterKnife.bind(this);
         initView(savedInstanceState);

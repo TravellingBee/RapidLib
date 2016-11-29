@@ -1,49 +1,35 @@
 package com.utouu.test.module.main;
 
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 import com.flyco.tablayout.CommonTabLayout;
-import com.marno.mbasiclib.module.activity.RapidPagerMainActivity;
+import com.marno.mbasiclib.entity.TabEntity;
+import com.marno.mbasiclib.module.activity.RapidMainActivity;
 import com.utouu.test.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by marno on 2016/8/23/15:20.
  * 主页面
  */
-public class MainActivity extends RapidPagerMainActivity {
+public class MainActivity extends RapidMainActivity {
 
     private ArrayList<Fragment> mFragments = new ArrayList<>();
 
     @Override
-    public String[] getTabNameArray() {
-        return new String[]{"新闻", "图片", "我的"};
+    public boolean isPager() {
+        return true;
     }
 
-    @NonNull
     @Override
-    public int[] getTabUnselectedIcon() {
-        return new int[]{R.drawable.ic_news,
-                R.drawable.ic_image, R.drawable.ic_me};
-    }
-
-    @NonNull
-    @Override
-    public int[] getTabSelectedIcon() {
-        return new int[]{
-                R.drawable.ic_news_selected,
-                R.drawable.ic_image_selected, R.drawable.ic_me_selected};
-    }
-
-    @NonNull
-    @Override
-    public ArrayList<Fragment> initFragments() {
-        mFragments.add(FirstFragment.newIns());
-        mFragments.add(ThirdFragment.newIns());
-        mFragments.add(FirstFragment.newIns());
-        return mFragments;
+    public List<TabEntity> getTabEntities() {
+        ArrayList<TabEntity> tabEntities = new ArrayList<>();
+        tabEntities.add(new TabEntity("新闻", R.drawable.ic_news, R.drawable.ic_news_selected, FirstFragment.newIns()));
+        tabEntities.add(new TabEntity("图片", R.drawable.ic_image, R.drawable.ic_image_selected, ThirdFragment.newIns()));
+        tabEntities.add(new TabEntity("我的", R.drawable.ic_me, R.drawable.ic_me_selected, FirstFragment.newIns()));
+        return tabEntities;
     }
 
     //如果需要tab其他属性，需要实现该方法

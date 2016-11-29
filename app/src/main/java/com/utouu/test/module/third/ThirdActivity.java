@@ -1,14 +1,15 @@
 package com.utouu.test.module.third;
 
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 import com.flyco.tablayout.CommonTabLayout;
+import com.marno.mbasiclib.entity.TabEntity;
 import com.marno.mbasiclib.module.activity.RapidMainActivity;
 import com.utouu.test.R;
 import com.utouu.test.module.main.ThirdFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ThirdActivity extends RapidMainActivity {
 
@@ -25,34 +26,19 @@ public class ThirdActivity extends RapidMainActivity {
     }
 
     @Override
-    public String[] getTabNameArray() {
-        return new String[]{"新闻", "视频", "图片", "我的"};
-//        return null;
+    public boolean isPager() {
+        return false;
     }
 
-    @NonNull
-    @Override
-    public int[] getTabUnselectedIcon() {
-        return new int[]{R.drawable.ic_news, R.drawable.ic_video,
-                R.drawable.ic_image, R.drawable.ic_me};
-    }
 
-    @NonNull
     @Override
-    public int[] getTabSelectedIcon() {
-        return new int[]{
-                R.drawable.ic_news_selected, R.drawable.ic_video_selected,
-                R.drawable.ic_image_selected, R.drawable.ic_me_selected};
-    }
-
-    @NonNull
-    @Override
-    public ArrayList<Fragment> initFragments() {
-        mFragments.add(ThirdFragment.newIns());
-        mFragments.add(ContentFragment3.newIns());
-        mFragments.add(ThirdFragment.newIns());
-        mFragments.add(ContentFragment3.newIns());
-        return mFragments;
+    public List<TabEntity> getTabEntities() {
+        ArrayList<TabEntity> tabEntities = new ArrayList<>();
+        tabEntities.add(new TabEntity(null, R.drawable.ic_news, R.drawable.ic_news_selected, ThirdFragment.newIns()));
+        tabEntities.add(new TabEntity(null, R.drawable.ic_video, R.drawable.ic_video_selected, ContentFragment3.newIns()));
+        tabEntities.add(new TabEntity("", R.drawable.ic_image, R.drawable.ic_image_selected, ThirdFragment.newIns()));
+        tabEntities.add(new TabEntity("", R.drawable.ic_me, R.drawable.ic_me_selected, ContentFragment3.newIns()));
+        return tabEntities;
     }
 
     //如果需要tab其他属性，需要实现该方法

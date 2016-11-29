@@ -1,30 +1,28 @@
 package com.marno.mbasiclib.entity;
 
-import com.flyco.tablayout.listener.CustomTabEntity;
+import android.support.v4.app.Fragment;
 
-public class TabEntity implements CustomTabEntity {
-    public String title;
-    public int selectedIcon;
-    public int unSelectedIcon;
+/**
+ * Create by Marno on 2016/11/29 16:45
+ * Function：tab实体类
+ * Desc：
+ */
+public class TabEntity {
+    public String mTitle;
+    public int mSelectedIcon;
+    public int mUnSelectedIcon;
+    public Fragment mFragment;
 
-    public TabEntity(String title, int selectedIcon, int unSelectedIcon) {
-        this.title = title;
-        this.selectedIcon = selectedIcon;
-        this.unSelectedIcon = unSelectedIcon;
+    public TabEntity(String title, int unSelectedIcon, int selectedIcon, Fragment fragment) {
+        this.mTitle = title;
+        this.mSelectedIcon = selectedIcon;
+        this.mUnSelectedIcon = unSelectedIcon;
+        this.mFragment = fragment;
     }
 
-    @Override
-    public String getTabTitle() {
-        return title;
-    }
-
-    @Override
-    public int getTabSelectedIcon() {
-        return selectedIcon;
-    }
-
-    @Override
-    public int getTabUnselectedIcon() {
-        return unSelectedIcon;
+    public TabEntity(int unSelectedIcon, int selectedIcon, Fragment fragment) {
+        mSelectedIcon = selectedIcon;
+        mUnSelectedIcon = unSelectedIcon;
+        mFragment = fragment;
     }
 }

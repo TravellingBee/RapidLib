@@ -17,7 +17,7 @@ allprojects {
 ```
 dependencies {
     compile 'com.github.MarnonDev:RapidLibs:最新版本号'
-    如：compile 'com.github.MarnonDev:RapidLib.v1.0.0'
+    如：compile 'com.github.MarnonDev:RapidLibs.v1.0.0'
 }
 ```
 
@@ -39,7 +39,7 @@ dependencies {
 - [ ] 快速创建启动页和引导页
 - [ ] 优化刷新和加载页面的代码
 - [ ] 将retrofit二次封装
-- [ ] MVP架构
+- [ * 创建常见Activity和Fragment] MVP架构
 
 ### Guide
 
