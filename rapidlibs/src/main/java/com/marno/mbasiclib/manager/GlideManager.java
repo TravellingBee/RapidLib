@@ -2,7 +2,6 @@ package com.marno.mbasiclib.manager;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -13,9 +12,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.marno.mbasiclib.R;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 
 /**
  * Created by 李刚 on 2016/4/16/08:55.
@@ -101,7 +97,6 @@ public final class GlideManager {
             if (result == null) {
                 result = Bitmap.createBitmap(size, size, Bitmap.Config.RGB_565);
             }
-            result = compressBitmap(result);
 
             Canvas canvas = new Canvas(result);
             Paint paint = new Paint();
@@ -109,21 +104,6 @@ public final class GlideManager {
             paint.setAntiAlias(true);
             float r = size / 2f;
             canvas.drawCircle(r, r, r, paint);
-            return result;
-        }
-
-        private static Bitmap compressBitmap(Bitmap source) {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            source.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-            int options = 100;
-
-            while (baos.toByteArray().length / 1024 > 500) {
-                baos.reset();//避免泄漏，每次清空
-             source.compress(Bitmap.CompressFormat.JPEG, options, baos);
-                options -= 10;
-            }
-            ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());
-            Bitmap result = BitmapFactory.decodeStream(isBm, null, null);
             return result;
         }
 
