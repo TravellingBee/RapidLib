@@ -22,8 +22,7 @@
             tools:background="@drawable/shape_placeholder"
             android:id="@+id/iv_goodsLogo_goodsFragment"
             android:layout_width="match_parent"
-            android:layout_height="158dp"
-            android:scaleType="centerCrop"/>
+            android:layout_height="158dp"/>
 
 
         <TextView

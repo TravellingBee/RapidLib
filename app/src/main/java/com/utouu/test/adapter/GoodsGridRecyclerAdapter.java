@@ -35,7 +35,7 @@ public class GoodsGridRecyclerAdapter extends BaseQuickAdapter<GoodsEntity, Base
     @Override
     protected void convert(BaseViewHolder helper, GoodsEntity item) {
         helper.setText(R.id.tv_goodsName_goodsFragment, item.goods_name);
-        GlideManager.loadImg(item.goods_thumb, helper.getView(R.id.iv_goodsLogo_goodsFragment));
+        GlideManager.loadRoundImg(item.goods_thumb, helper.getView(R.id.iv_goodsLogo_goodsFragment));
         helper.getConvertView().setOnClickListener(v -> ToastUtil.show("1234"));
     }
 }
