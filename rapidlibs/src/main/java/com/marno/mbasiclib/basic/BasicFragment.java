@@ -22,7 +22,10 @@ public abstract class BasicFragment extends RxFragment {
 
     protected Activity mContext;
     protected boolean mIsFirstShow;
+
     private Unbinder mUnbinder;
+
+    protected View mContentView;//Fragment内容View
 
     protected abstract int getLayout();
 
@@ -44,10 +47,10 @@ public abstract class BasicFragment extends RxFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(getLayout(), container, false);
-        mUnbinder = ButterKnife.bind(this, view);
-        initView(view, savedInstanceState);
-        return view;
+        mContentView = inflater.inflate(getLayout(), container, false);
+        mUnbinder = ButterKnife.bind(this, mContentView);
+        initView(mContentView, savedInstanceState);
+        return mContentView;
     }
 
     @Override

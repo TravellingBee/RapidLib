@@ -2,10 +2,12 @@ package com.marno.mbasiclib.module.fragment;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.marno.mbasiclib.basic.BasicFragment;
 import com.marno.mbasiclib.interfaces.IRefreshView;
 
+import in.srain.cube.views.ptr.PtrClassicDefaultHeader;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrUIHandler;
@@ -19,7 +21,7 @@ public abstract class RapidRefreshFragment extends BasicFragment implements IRef
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        mPtrLayout = getPtrView();
+        mPtrLayout = getPtrLayout();
         if (null != mPtrLayout) {
             mPtrLayout.setPtrHandler(this);
             //解决与viewpager横向滑动冲突
@@ -45,5 +47,32 @@ public abstract class RapidRefreshFragment extends BasicFragment implements IRef
     @Override
     public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
         return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
+    }
+
+    @Override
+    public PtrUIHandler getRefreshHeader() {
+        return new PtrClassicDefaultHeader(mContext);
+    }
+
+    //根据当前Fragment布局获取布局中的PtrFrameLayout
+    private PtrFrameLayout getPtrLayout() {
+        if (isPTR(mContentView)) {
+            return (PtrFrameLayout) mContentView;
+        } else if (mContentView instanceof ViewGroup) {
+            ViewGroup contentView = (ViewGroup) mContentView;
+            int childCount = contentView.getChildCount();
+            for (int i = 0; i < childCount; i++) {
+                View childView = contentView.getChildAt(i);
+                if (isPTR(childView)) {
+                    return (PtrFrameLayout) childView;
+                }
+            }
+        }
+        throw new NullPointerException("mPtrLayout on a null object reference");
+    }
+
+    //判断布局是否是PtrFrameLayout
+    private boolean isPTR(View v) {
+        return v instanceof PtrFrameLayout;
     }
 }

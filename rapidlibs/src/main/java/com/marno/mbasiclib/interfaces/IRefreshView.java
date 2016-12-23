@@ -1,6 +1,5 @@
 package com.marno.mbasiclib.interfaces;
 
-import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
 import in.srain.cube.views.ptr.PtrUIHandler;
 
@@ -14,10 +13,4 @@ public interface IRefreshView extends PtrHandler {
      * @return 下拉刷新头
      */
     PtrUIHandler getRefreshHeader();
-
-    /**
-     * 获取下拉刷新布局
-     * @return 下拉刷新布局对象
-     */
-    PtrFrameLayout getPtrView();
 }

@@ -10,9 +10,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.marno.easystatelibrary.EasyStatusView;
 import com.marno.easyutilcode.ToastUtil;
 import com.marno.mbasiclib.enums.RxLifeEvent;
+import com.marno.mbasiclib.module.fragment.RapidRefreshAndLoadFragment;
 import com.utouu.test.R;
 import com.utouu.test.adapter.GoodsGridRecyclerAdapter;
-import com.utouu.test.base.BaseDefaultRefreshHeaderFragment;
 import com.utouu.test.data.entity.GoodsEntity;
 import com.utouu.test.data.entity.GoodsList;
 import com.utouu.test.data.entity.GoodsListEntity;
@@ -29,7 +29,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 /**
  * Created by marno on 2016/8/26/11:01.
  */
-public class ThirdFragment extends BaseDefaultRefreshHeaderFragment {
+public class GoodsFragment extends RapidRefreshAndLoadFragment {
 
     @BindView(R.id.esv_layout) EasyStatusView mEsvLayout;
     @BindView(R.id.rv_content) RecyclerView mRecyclerView;
@@ -40,8 +40,8 @@ public class ThirdFragment extends BaseDefaultRefreshHeaderFragment {
     private HashMap<String, String> mParam_goodsList;
 
 
-    public static ThirdFragment newIns() {
-        ThirdFragment instance = new ThirdFragment();
+    public static GoodsFragment newIns() {
+        GoodsFragment instance = new GoodsFragment();
         return instance;
     }
 
@@ -98,11 +98,6 @@ public class ThirdFragment extends BaseDefaultRefreshHeaderFragment {
     @Override
     public RecyclerView getRecyclerView() {
         return mRecyclerView;
-    }
-
-    @Override
-    public PtrFrameLayout getPtrView() {
-        return mPtrLayout;
     }
 
 

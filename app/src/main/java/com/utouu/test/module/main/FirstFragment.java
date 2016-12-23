@@ -136,11 +136,6 @@ public class FirstFragment extends BaseCustomRefreshHeaderFragment {
     }
 
     @Override
-    public PtrFrameLayout getPtrView() {
-        return mPtrLayout;
-    }
-
-    @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
         loadData();
     }

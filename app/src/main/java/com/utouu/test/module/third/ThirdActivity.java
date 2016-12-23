@@ -6,7 +6,7 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.marno.mbasiclib.entity.TabEntity;
 import com.marno.mbasiclib.module.activity.RapidMainActivity;
 import com.utouu.test.R;
-import com.utouu.test.module.main.ThirdFragment;
+import com.utouu.test.module.main.GoodsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +34,9 @@ public class ThirdActivity extends RapidMainActivity {
     @Override
     public List<TabEntity> getTabEntities() {
         ArrayList<TabEntity> tabEntities = new ArrayList<>();
-        tabEntities.add(new TabEntity(null, R.drawable.ic_news, R.drawable.ic_news_selected, ThirdFragment.newIns()));
+        tabEntities.add(new TabEntity(null, R.drawable.ic_news, R.drawable.ic_news_selected, GoodsFragment.newIns()));
         tabEntities.add(new TabEntity(null, R.drawable.ic_video, R.drawable.ic_video_selected, ContentFragment3.newIns()));
-        tabEntities.add(new TabEntity("", R.drawable.ic_image, R.drawable.ic_image_selected, ThirdFragment.newIns()));
+        tabEntities.add(new TabEntity("", R.drawable.ic_image, R.drawable.ic_image_selected, GoodsFragment.newIns()));
         tabEntities.add(new TabEntity("", R.drawable.ic_me, R.drawable.ic_me_selected, ContentFragment3.newIns()));
         return tabEntities;
     }

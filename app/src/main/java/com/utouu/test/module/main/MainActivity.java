@@ -27,7 +27,7 @@ public class MainActivity extends RapidMainActivity {
     public List<TabEntity> getTabEntities() {
         ArrayList<TabEntity> tabEntities = new ArrayList<>();
         tabEntities.add(new TabEntity("新闻", R.drawable.ic_news, R.drawable.ic_news_selected, FirstFragment.newIns()));
-        tabEntities.add(new TabEntity("图片", R.drawable.ic_image, R.drawable.ic_image_selected, ThirdFragment.newIns()));
+        tabEntities.add(new TabEntity("图片", R.drawable.ic_image, R.drawable.ic_image_selected, GoodsFragment.newIns()));
         tabEntities.add(new TabEntity("我的", R.drawable.ic_me, R.drawable.ic_me_selected, FirstFragment.newIns()));
         return tabEntities;
     }

@@ -19,7 +19,8 @@ public abstract class RapidRefreshActivity extends BasicActivity implements IRef
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        mPtrLayout = getPtrView();
+//        getPtrLayout();
+        mPtrLayout = getPtrLayout();
         if (null != mPtrLayout) {
             mPtrLayout.setPtrHandler(this);
             //解决与viewpager横向滑动冲突
@@ -45,5 +46,10 @@ public abstract class RapidRefreshActivity extends BasicActivity implements IRef
     @Override
     public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
         return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
+    }
+
+    public PtrFrameLayout getPtrLayout() {
+        // TODO: 2016/12/23 根据Activity获取布局中的PtrFrameLayout
+        return mPtrLayout;
     }
 }
