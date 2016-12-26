@@ -113,9 +113,7 @@ public class FirstFragment extends BaseCustomRefreshHeaderFragment {
         });
 
         mBanner.setData(images, titles);
-        mBanner.setOnItemClickListener((banner, view, model, position) -> {
-            IntentUtil.to(mContext, ThirdActivity.class);
-        });
+        mBanner.setDelegate((banner, itemView, model, position) -> IntentUtil.to(mContext, ThirdActivity.class));
 
         mAdapter.addHeaderView(bannerView);
     }
