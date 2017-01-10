@@ -21,7 +21,7 @@ public abstract class BaseCustomRefreshHeaderFragment extends RapidUpdateDataFra
         StoreHouseHeader storeHouseHeader = new StoreHouseHeader(mContext);
         int padding = DimensUtil.dp2px(20, mContext);
         storeHouseHeader.setPadding(padding, padding, padding, padding);
-        storeHouseHeader.initWithString("RapidLibs");
+        storeHouseHeader.initWithString("RapidLib");
         storeHouseHeader.setTextColor(Color.parseColor("#333333"));
         return storeHouseHeader;
     }
