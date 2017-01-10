@@ -1,1 +1,1 @@
-include ':app', ':rapidlibs'
+include ':app', ':rapidlib'

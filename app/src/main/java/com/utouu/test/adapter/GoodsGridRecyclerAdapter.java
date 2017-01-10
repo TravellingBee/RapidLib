@@ -5,7 +5,7 @@ import android.content.Context;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.marno.easyutilcode.ToastUtil;
-import com.marno.mbasiclib.manager.GlideManager;
+import com.marno.rapidlib.manager.GlideManager;
 import com.utouu.test.R;
 import com.utouu.test.data.entity.GoodsEntity;
 
@@ -35,7 +35,7 @@ public class GoodsGridRecyclerAdapter extends BaseQuickAdapter<GoodsEntity, Base
     @Override
     protected void convert(BaseViewHolder helper, GoodsEntity item) {
         helper.setText(R.id.tv_goodsName_goodsFragment, item.goods_name);
-        GlideManager.loadRoundImg(item.goods_thumb, helper.getView(R.id.iv_goodsLogo_goodsFragment));
+        GlideManager.loadImg(item.goods_thumb, helper.getView(R.id.iv_goodsLogo_goodsFragment));
         helper.getConvertView().setOnClickListener(v -> ToastUtil.show("1234"));
     }
 }

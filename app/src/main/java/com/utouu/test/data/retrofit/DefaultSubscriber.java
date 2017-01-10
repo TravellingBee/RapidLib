@@ -4,7 +4,7 @@ import android.accounts.NetworkErrorException;
 
 import com.google.gson.JsonSyntaxException;
 import com.marno.easyutilcode.ToastUtil;
-import com.marno.mbasiclib.manager.MLog;
+import com.marno.rapidlib.manager.MLog;
 import com.utouu.test.data.exception.AccountsException;
 
 import java.net.ConnectException;

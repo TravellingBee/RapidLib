@@ -11,13 +11,13 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.marno.easystatelibrary.EasyStatusView;
 import com.marno.easyutilcode.IntentUtil;
-import com.marno.mbasiclib.manager.GlideManager;
+import com.marno.rapidlib.manager.GlideManager;
 import com.utouu.test.R;
 import com.utouu.test.adapter.HomeAdapter;
 import com.utouu.test.base.BaseCustomRefreshHeaderFragment;
 import com.utouu.test.data.entity.TestEntity;
 import com.utouu.test.data.retrofit.DefaultSubscriber;
-import com.utouu.test.module.third.ThirdActivity;
+import com.utouu.test.module.third.GoodsActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,6 +40,7 @@ public class FirstFragment extends BaseCustomRefreshHeaderFragment {
     @BindView(R.id.rv_content) RecyclerView mRecyclerView;
     @BindView(R.id.ptr_layout) PtrFrameLayout mPtrLayout;
     private BGABanner mBanner;
+    private HomeAdapter mHomeAdapter;
 
     public static FirstFragment newIns() {
         return new FirstFragment();
@@ -82,8 +83,8 @@ public class FirstFragment extends BaseCustomRefreshHeaderFragment {
                     @Override
                     public void _onNext(ArrayList<TestEntity> entity) {
                         mEsvLayout.content();
-                        if (mPtrLayout.isRefreshing()) mAdapter.setNewData(new ArrayList<>());
-                        mAdapter.addData(entity);
+                        if (mPtrLayout.isRefreshing()) mHomeAdapter.setNewData(new ArrayList<>());
+                        mHomeAdapter.addData(entity);
                     }
 
                     @Override
@@ -94,7 +95,7 @@ public class FirstFragment extends BaseCustomRefreshHeaderFragment {
     }
 
     @Override
-    protected void _initView(View view, Bundle savedInsanceState) {
+    protected void initView(View view, Bundle savedInsanceState) {
         mEsvLayout.loading();
         setBanner();
     }
@@ -113,24 +114,20 @@ public class FirstFragment extends BaseCustomRefreshHeaderFragment {
         });
 
         mBanner.setData(images, titles);
-        mBanner.setDelegate((banner, itemView, model, position) -> IntentUtil.to(mContext, ThirdActivity.class));
+        mBanner.setDelegate((banner, itemView, model, position) -> IntentUtil.to(mContext, GoodsActivity.class));
 
-        mAdapter.addHeaderView(bannerView);
+        mHomeAdapter.addHeaderView(bannerView);
     }
 
     @Override
     public BaseQuickAdapter getAdapter() {
-        return new HomeAdapter(mContext);
+        mHomeAdapter = new HomeAdapter(mContext);
+        return mHomeAdapter;
     }
 
     @Override
     public RecyclerView.LayoutManager getLayoutManager() {
         return new LinearLayoutManager(mContext);
-    }
-
-    @Override
-    public RecyclerView getRecyclerView() {
-        return mRecyclerView;
     }
 
     @Override

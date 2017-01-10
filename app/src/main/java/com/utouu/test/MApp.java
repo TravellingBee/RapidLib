@@ -5,7 +5,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.marno.easyutilcode.ToastUtil;
-import com.marno.mbasiclib.manager.MLog;
+import com.marno.rapidlib.manager.MLog;
 import com.orhanobut.logger.Logger;
 import com.umeng.analytics.MobclickAgent;
 

@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.marno.easyutilcode.IntentUtil;
-import com.marno.mbasiclib.manager.GlideManager;
+import com.marno.rapidlib.manager.GlideManager;
 import com.utouu.test.R;
 import com.utouu.test.data.entity.TestEntity;
 import com.utouu.test.module.second.SecondBackActivity;

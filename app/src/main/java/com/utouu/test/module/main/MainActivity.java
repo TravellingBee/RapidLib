@@ -3,8 +3,8 @@ package com.utouu.test.module.main;
 import android.support.v4.app.Fragment;
 
 import com.flyco.tablayout.CommonTabLayout;
-import com.marno.mbasiclib.entity.TabEntity;
-import com.marno.mbasiclib.module.activity.RapidMainActivity;
+import com.marno.rapidlib.entity.TabEntity;
+import com.marno.rapidlib.module.activity.RapidMainActivity;
 import com.utouu.test.R;
 
 import java.util.ArrayList;
@@ -18,6 +18,7 @@ public class MainActivity extends RapidMainActivity {
 
     private ArrayList<Fragment> mFragments = new ArrayList<>();
 
+    //返回true表示支持以ViewPager方式进行滑动，返回false则不
     @Override
     public boolean isPager() {
         return true;
@@ -35,17 +36,11 @@ public class MainActivity extends RapidMainActivity {
     //如果需要tab其他属性，需要实现该方法
     @Override
     public void setTab(CommonTabLayout tabLayout) {
-
     }
 
     @Override
     protected int getStatusBarColor() {
         return 0;
-    }
-
-    @Override
-    protected void loadData() {
-
     }
 
 }

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.marno.easyutilcode.IntentUtil;
-import com.marno.mbasiclib.basic.BasicActivity;
+import com.marno.rapidlib.basic.BasicActivity;
 import com.utouu.test.R;
 
 /**

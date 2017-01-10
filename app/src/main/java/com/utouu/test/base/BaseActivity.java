@@ -2,7 +2,7 @@ package com.utouu.test.base;
 
 import android.os.Bundle;
 
-import com.marno.mbasiclib.basic.BasicActivity;
+import com.marno.rapidlib.basic.BasicActivity;
 
 /**
  * Created by Marno on 2016/8/25/15:15.

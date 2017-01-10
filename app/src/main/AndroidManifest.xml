@@ -48,7 +48,7 @@
             android:theme="@style/AppTheme.SwipeBack">
         </activity>
         <activity
-            android:name=".module.third.ThirdActivity"
+            android:name=".module.third.GoodsActivity"
             android:theme="@style/AppTheme.SwipeBack"/>
     </application>
 
