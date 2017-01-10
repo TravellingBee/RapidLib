@@ -7,7 +7,6 @@ import android.content.Context;
 import com.marno.easyutilcode.ToastUtil;
 import com.marno.rapidlib.manager.MLog;
 import com.orhanobut.logger.Logger;
-import com.umeng.analytics.MobclickAgent;
 
 /**
  * Created by 李刚 on 2016/8/23/15:22.
@@ -23,10 +22,6 @@ public class MApp extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
-        //友盟分析
-        MobclickAgent.openActivityDurationTrack(false);//关闭默认的统计方式
-        MobclickAgent.setDebugMode(isDebug);//设置debug模式
-        MobclickAgent.setCatchUncaughtExceptions(true);//捕捉异常方式
 
         //关闭shareSDK的日志
 //        ShareSDK.closeDebug();

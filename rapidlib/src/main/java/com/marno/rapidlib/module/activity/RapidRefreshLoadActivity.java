@@ -1,8 +1,9 @@
-package com.marno.rapidlib.module.fragment;
+package com.marno.rapidlib.module.activity;
 
 import android.view.View;
+import android.view.ViewGroup;
 
-import com.marno.rapidlib.basic.BasicFragment;
+import com.marno.rapidlib.basic.BasicActivity;
 import com.marno.rapidlib.delegate.UpdateDataDelegate;
 import com.marno.rapidlib.interfaces.IUpdateDataView;
 
@@ -12,19 +13,21 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrUIHandler;
 
 /**
- * Create by Marno on 2016/10/26/22:38.
- * Function：Fragment继承该类可以实现下拉刷新和上拉加载功能
+ * Create by Marno on 2016/10/26/22:43.
+ * Function：Activity继承该类可以实现下拉刷新和上拉加载功能
  * Desc：
  */
-public abstract class RapidUpdateDataFragment extends BasicFragment implements IUpdateDataView {
+public abstract class RapidRefreshLoadActivity extends BasicActivity implements IUpdateDataView {
 
     private UpdateDataDelegate mDelegate;
 
+
     @Override
     protected void beforeInitView() {
-        mDelegate = new UpdateDataDelegate(mContentView);
-        mDelegate.initPTR(this, getRefreshHeader());
-        mDelegate.initLoad(this,getAdapter(), getLayoutManager());
+        ViewGroup rootView = (ViewGroup)getWindow().getDecorView().findViewById(android.R.id.content);
+        mDelegate = new UpdateDataDelegate(rootView);
+        mDelegate.initPTR(this,getRefreshHeader());
+        mDelegate.initLoad(this,getAdapter(),getLayoutManager());
     }
 
     // 检测是否可以进行下拉刷新
