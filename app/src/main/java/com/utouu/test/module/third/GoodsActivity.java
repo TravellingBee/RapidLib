@@ -8,7 +8,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.marno.easystatelibrary.EasyStatusView;
 import com.marno.easyutilcode.ToastUtil;
 import com.marno.rapidlib.enums.RxLifeEvent;
-import com.marno.rapidlib.module.activity.RapidUpdateDataActivity;
+import com.marno.rapidlib.module.activity.RapidRefreshLoadActivity;
 import com.utouu.test.R;
 import com.utouu.test.adapter.GoodsGridRecyclerAdapter;
 import com.utouu.test.data.entity.GoodsEntity;
@@ -24,7 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 
-public class GoodsActivity extends RapidUpdateDataActivity {
+public class GoodsActivity extends RapidRefreshLoadActivity {
 
     @BindView(R.id.esv_layout) EasyStatusView mEsvLayout;
     @BindView(R.id.rv_content) RecyclerView mRecyclerView;

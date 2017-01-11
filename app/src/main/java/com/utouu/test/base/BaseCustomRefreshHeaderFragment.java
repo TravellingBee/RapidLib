@@ -3,7 +3,8 @@ package com.utouu.test.base;
 import android.graphics.Color;
 
 import com.marno.easyutilcode.DimensUtil;
-import com.marno.rapidlib.module.fragment.RapidUpdateDataFragment;
+import com.marno.rapidlib.module.fragment.RapidRefreshLoadFragment;
+
 
 import in.srain.cube.views.ptr.PtrUIHandler;
 import in.srain.cube.views.ptr.header.StoreHouseHeader;
@@ -12,7 +13,7 @@ import in.srain.cube.views.ptr.header.StoreHouseHeader;
  * Created by marno on 2016/10/26/22:22.
  */
 
-public abstract class BaseCustomRefreshHeaderFragment extends RapidUpdateDataFragment {
+public abstract class BaseCustomRefreshHeaderFragment extends RapidRefreshLoadFragment {
 
     @Override
     public PtrUIHandler getRefreshHeader() {
