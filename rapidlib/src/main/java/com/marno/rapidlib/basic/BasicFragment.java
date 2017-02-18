@@ -21,6 +21,7 @@ public abstract class BasicFragment extends RxFragment {
     protected String TAG = this.getClass().getSimpleName();
 
     protected Activity mContext;
+
     protected boolean mIsFirstShow;
 
     private Unbinder mUnbinder;
@@ -66,7 +67,7 @@ public abstract class BasicFragment extends RxFragment {
     }
 
     /**
-     * 不在iewpager中Fragment懒加载
+     * 不在viewpager中Fragment懒加载
      */
     @Override
     public void onHiddenChanged(boolean hidden) {
