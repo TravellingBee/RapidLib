@@ -22,7 +22,8 @@ public abstract class BasicFragment extends RxFragment {
 
     protected Activity mContext;
 
-    protected boolean mIsFirstShow;
+    private boolean mIsFirstShow = true;
+    private boolean mIsViewCreated = false;
 
     private Unbinder mUnbinder;
 
@@ -35,7 +36,8 @@ public abstract class BasicFragment extends RxFragment {
     /**
      * 在初始化视图前做一些操作
      */
-    protected void beforeInitView() {}
+    protected void beforeInitView() {
+    }
 
     /**
      * 需要加载数据时重写此方法
@@ -47,7 +49,6 @@ public abstract class BasicFragment extends RxFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         this.mContext = (Activity) context;
-        mIsFirstShow = true;
     }
 
 
@@ -57,6 +58,10 @@ public abstract class BasicFragment extends RxFragment {
         mUnbinder = ButterKnife.bind(this, mContentView);
         beforeInitView();
         initView(mContentView, savedInstanceState);
+        mIsViewCreated = true;
+        if (getUserVisibleHint()) {
+            lazyLoad();
+        }
         return mContentView;
     }
 
@@ -71,7 +76,7 @@ public abstract class BasicFragment extends RxFragment {
      */
     @Override
     public void onHiddenChanged(boolean hidden) {
-        if (!hidden) lazyLoad();
+        if (mIsViewCreated && !hidden)  lazyLoad();
     }
 
     /**
@@ -80,7 +85,7 @@ public abstract class BasicFragment extends RxFragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) lazyLoad();
+        if (mIsViewCreated && isVisibleToUser) lazyLoad();
     }
 
     private void lazyLoad() {
